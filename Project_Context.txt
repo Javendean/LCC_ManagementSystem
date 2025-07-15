@@ -1,0 +1,42 @@
+PROJECT CONTEXT: NON-PROFIT MESSAGING PLATFORM1. CORE OBJECTIVEGoal: Build a modern, performant, and cost-effective internal messaging platform.Users: ~10 administrative users.Data: ~350 contacts.Primary Function: Manage contacts and send SMS messages.Key Principles: Simplicity, performance, long-term maintainability, minimal operational cost.2. TECHNOLOGY STACKFrontend Framework: SvelteKit (using plain JavaScript).UI Components: Shadcn-Svelte with Tailwind CSS.Hosting & Backend: Vercel (Hobby/Free Tier).Database & Auth: Supabase (Free Tier).SMS Provider: Twilio (using Twilio.org Impact Access Program).3. DEVELOPMENT ENVIRONMENT & CODE QUALITY3.1. Required Dev DependenciesInstall via npm install --save-dev:eslinteslint-plugin-svelteprettierprettier-plugin-svelteeslint-config-prettier3.2. Linter Config: .eslintrc.jsonThis file configures ESLint for code quality. It delegates formatting to Prettier.{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:svelte/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2021
+  },
+  "env": {
+    "browser": true,
+    "es2017": true,
+    "node": true
+  },
+  "rules": {}
+}
+3.3. Formatter Config: .prettierrc.jsonThis file configures Prettier for consistent code style.{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "useTabs": false,
+  "plugins": ["prettier-plugin-svelte"],
+  "svelteSortOrder": "options-scripts-styles-markup",
+  "svelteStrictMode": false,
+  "svelteBracketNewLine": true,
+  "svelteIndentScriptAndStyle": true
+}
+3.4. VS Code Editor Config: .vscode/settings.jsonThis file ensures VS Code uses the correct formatter on save.{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+4. DATABASE SCHEMA (SUPABASE/POSTGRESQL)Table: contactsid (bigint, Primary Key, auto-increment)first_name (text, Not Null)last_name (text, Not Null)phone_number (text, Not Null, Unique)created_at (timestamptz, default: now())Table: groupsid (bigint, Primary Key, auto-increment)name (text, Not Null, Unique)description (text, Optional)created_at (timestamptz, default: now())Table: contact_groups (Join Table)contact_id (bigint, Foreign Key -> contacts.id)group_id (bigint, Foreign Key -> groups.id)5. UI & CORE FUNCTIONALITY BLUEPRINT5.1. Contact List ViewComponent: Use Table from shadcn-svelte (built on tanstack-svelte-table).Required Features:Column SortingPaginationColumn Filtering (by name/phone)Row Selection (via checkboxes)5.2. Message Composition ViewComponent: Use Dialog (modal) from shadcn-svelte.Workflow:A "Draft Message" button opens the modal.The modal contains a form with Input, Textarea, Button.A toggle/radio button selects the sending mode: "Broadcast" or "Group Chat".5.3. CSV Import LogicTrigger: Frontend file input form.Backend: SvelteKit API route at /api/upload-csv.Process:Receive file in API route.Process file from in-memory buffer (Vercel has a read-only filesystem).Use papaparse library to parse CSV data.Use Supabase client to upsert data into contacts, groups, and contact_groups tables.5.4. SMS Sending LogicMode 1: Broadcast SMS (One-to-Many)Use Case: Announcements, reminders.API Route: /api/send-broadcast.Method: Use Twilio Programmable Messaging API.Process: Iterate through a list of phone numbers and make a separate API call to Twilio for each one.Mode 2: Group Chat (Many-to-Many)Use Case: Interactive discussions.API Route: /api/create-group-chat.Method: Use Twilio Conversations API.Process:Create a "Conversation" resource in Twilio.Add each recipient as a "Participant" to the Conversation.Send the initial message to the Conversation resource.
