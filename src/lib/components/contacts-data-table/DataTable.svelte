@@ -1,18 +1,74 @@
 <script>
-  import { createSvelteTable, flexRender, getCoreRowModel } from '@tanstack/svelte-table';
-  import { columns } from './columns.js';
-  import * as Table from '$lib/components/ui/table';
+	import {
+		createSvelteTable,
+		flexRender,
+		getCoreRowModel,
+		getFilteredRowModel,
+		getPaginationRowModel,
+		getSortedRowModel
+	} from '@tanstack/svelte-table';
+	import { columns } from './columns.js';
+	import * as Table from '$lib/components/ui/table';
+	import { Input } from '$lib/components/ui/input';
+	import { Button } from '$lib/components/ui/button';
+	import {
+		ChevronDown,
+		ChevronLeft,
+		ChevronRight,
+		ChevronsLeft,
+		ChevronsRight
+	} from 'lucide-svelte';
+	import {
+		DropdownMenu,
+		DropdownMenuCheckboxItem,
+		DropdownMenuContent,
+		DropdownMenuTrigger
+	} from '$lib/components/ui/dropdown-menu';
 
-  /** @type {import('$lib/types').Contact[]} */
-  export let contacts = [];
+	/** @type {import('$lib/types').Contact[]} */
+	export let contacts = [];
 
-  const table = createSvelteTable({
-    get data() {
-      return contacts;
-    },
-    columns,
-    getCoreRowModel: getCoreRowModel()
-  });
+	let sorting = [];
+	let columnFilters = [];
+	let columnVisibility = {};
+	let rowSelection = {};
+
+	const table = createSvelteTable({
+		get data() {
+			return contacts;
+		},
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+		getSortedRowModel: getSortedRowModel(),
+		getFilteredRowModel: getFilteredRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
+		onSortingChange: (updater) => {
+			sorting = typeof updater === 'function' ? updater(sorting) : updater;
+		},
+		onColumnFiltersChange: (updater) => {
+			columnFilters = typeof updater === 'function' ? updater(columnFilters) : updater;
+		},
+		onColumnVisibilityChange: (updater) => {
+			columnVisibility = typeof updater === 'function' ? updater(columnVisibility) : updater;
+		},
+		onRowSelectionChange: (updater) => {
+			rowSelection = typeof updater === 'function' ? updater(rowSelection) : updater;
+		},
+		state: {
+			get sorting() {
+				return sorting;
+			},
+			get columnFilters() {
+				return columnFilters;
+			},
+			get columnVisibility() {
+				return columnVisibility;
+			},
+			get rowSelection() {
+				return rowSelection;
+			}
+		}
+	});
 </script>
 
 <div class="rounded-md border">
