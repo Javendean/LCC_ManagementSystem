@@ -1,15 +1,3 @@
-This guide synthesizes the architectural plan for a non-profit messaging platform with a sophisticated cognitive framework for an AI engineering agent. The result is a comprehensive, agent-executable instruction set designed to ensure the development of a high-quality, maintainable, and robust application.
-
-### **Part 1: Establishing the Cognitive Architecture**
-
-The first step is to move beyond a simple checklist and establish a
-
-cognitive architecture for the AI agent. This framework guides the agent's decision-making and ensures adherence to engineering excellence.
-
-**Key Principles:**
-
-- **Declarative Goals Over Imperative Commands**: Instead of dictating precise code, instructions should define high-level objectives and constraints. This empowers the agent to find the optimal implementation while adhering to project standards. For instance, a goal would be: "Implement a user-friendly loading state for the data table that prevents layout shift".
-- **Contextual Grounding**: The agent's effectiveness hinges on its understanding of the project's context. The provided Web Interface Architecture Plan_.docx serves as the single source of truth that the agent must internalize before starting any task. This ensures every line of code aligns with the strategic vision, such as the choice of SvelteKit over React.
 - **Verifiable Reasoning**: The agent is required to maintain an "inner monologue" by externalizing its thought process for every significant task. This is achieved through advanced prompting techniques like Chain-of-Thought (CoT) for procedural tasks and Tree-of-Thought (ToT) for design decisions, making its reasoning transparent and auditable.
 
 ### **Part 2: Structuring the GEMINI.md Instruction File**
@@ -212,7 +200,7 @@ GEMINI.md file, structured for clear, machine-readable execution. This file begi
 
 **# Tracks the completion status of individual project steps for robust state management and resumption of work.**
 
-**task_state_tracker:**
+**task_state_tracker: Example**
 
 **'2.1_Fetch_Data': { status: 'Complete' }**
 
