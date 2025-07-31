@@ -26,8 +26,8 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const VITE_PUBLIC_SUPABASE_URL: string;
-	export const VITE_PUBLIC_SUPABASE_ANON_KEY: string;
+	export const SUPABASE_URL: string;
+	export const SUPABASE_ANON_KEY: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
@@ -39,13 +39,11 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_428_1262719628: string;
-	export const EFC_428_1592913036: string;
-	export const EFC_428_2283032206: string;
-	export const EFC_428_2775293581: string;
-	export const EFC_428_3789132940: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
+	export const EFC_31400_1262719628: string;
+	export const EFC_31400_1592913036: string;
+	export const EFC_31400_2283032206: string;
+	export const EFC_31400_2775293581: string;
+	export const EFC_31400_3789132940: string;
 	export const GIT_ASKPASS: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
@@ -126,7 +124,8 @@ declare module '$env/static/private' {
  * ```
  */
 declare module '$env/static/public' {
-	
+	export const PUBLIC_SUPABASE_URL: string;
+	export const PUBLIC_SUPABASE_ANON_KEY: string;
 }
 
 /**
@@ -145,8 +144,8 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		VITE_PUBLIC_SUPABASE_URL: string;
-		VITE_PUBLIC_SUPABASE_ANON_KEY: string;
+		SUPABASE_URL: string;
+		SUPABASE_ANON_KEY: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
@@ -158,13 +157,11 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_428_1262719628: string;
-		EFC_428_1592913036: string;
-		EFC_428_2283032206: string;
-		EFC_428_2775293581: string;
-		EFC_428_3789132940: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
+		EFC_31400_1262719628: string;
+		EFC_31400_1592913036: string;
+		EFC_31400_2283032206: string;
+		EFC_31400_2775293581: string;
+		EFC_31400_3789132940: string;
 		GIT_ASKPASS: string;
 		HOME: string;
 		HOMEDRIVE: string;
@@ -252,6 +249,8 @@ declare module '$env/dynamic/private' {
  */
 declare module '$env/dynamic/public' {
 	export const env: {
+		PUBLIC_SUPABASE_URL: string;
+		PUBLIC_SUPABASE_ANON_KEY: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
 }

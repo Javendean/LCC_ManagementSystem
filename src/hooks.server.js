@@ -1,11 +1,13 @@
 import { createServerClient } from '@supabase/ssr'
 import { redirect } from '@sveltejs/kit'
-import { VITE_PUBLIC_SUPABASE_URL, VITE_PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+// IMPORTANT: Import from the 'private' module now
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private'
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 
 export const handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
-    VITE_PUBLIC_SUPABASE_URL,
-    VITE_PUBLIC_SUPABASE_ANON_KEY,
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
     {
       cookies: {
         get: (key) => event.cookies.get(key),
@@ -15,7 +17,7 @@ export const handle = async ({ event, resolve }) => {
         remove: (key, options) => {
           event.cookies.delete(key, { ...options, path: '/' })
         },
-      },
+      }
     }
   )
 
