@@ -1,18 +1,20 @@
-<!-- src/routes/login/+page.svelte -->
+<!-- my-app/src/routes/signup/+page.svelte -->
 <script>
   import { supabase } from '$lib/supabaseClient';
-  import { goto } from '$app/navigation';
 
   let email = '';
   let password = '';
   let errorMessage = '';
+  let successMessage = '';
   let loading = false;
 
-  async function handleLogin() {
+  async function handleSignUp() {
     loading = true;
     errorMessage = '';
+    successMessage = '';
+
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signUp({
         email: email,
         password: password,
       });
@@ -21,8 +23,7 @@
         throw error;
       }
 
-      // On successful login, SvelteKit's hooks will handle the redirect.
-      goto('/contacts');
+      successMessage = 'Success! Please check your email for a confirmation link.';
 
     } catch (error) {
       errorMessage = error.message;
@@ -33,10 +34,10 @@
 </script>
 
 <main style="font-family: sans-serif; max-width: 400px; margin: 4rem auto;">
-  <h1>Login</h1>
-  <p>Please sign in to continue.</p>
+  <h1>Create Account</h1>
+  <p>Sign up for a new account.</p>
 
-  <form on:submit|preventDefault={handleLogin}>
+  <form on:submit|preventDefault={handleSignUp}>
     <div style="margin-bottom: 1rem;">
       <label for="email" style="display: block; margin-bottom: 0.25rem;">Email</label>
       <input
@@ -59,6 +60,10 @@
       />
     </div>
 
+    {#if successMessage}
+      <p style="color: green;">{successMessage}</p>
+    {/if}
+
     {#if errorMessage}
       <p style="color: red;">{errorMessage}</p>
     {/if}
@@ -66,12 +71,13 @@
     <button
       type="submit"
       disabled={loading}
-      style="width: 100%; padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;"
+      style="width: 100%; padding: 0.75rem; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;"
     >
-      {loading ? 'Loading...' : 'Log In'}
+      {loading ? 'Signing Up...' : 'Sign Up'}
     </button>
-    <div style="text-align: center; margin-top: 1rem;">
-      <a href="/auth/forgot-password" style="color: #007bff; text-decoration: none;">Forgot Password?</a>
-    </div>
   </form>
+
+  <p style="text-align: center; margin-top: 1rem;">
+    Already have an account? <a href="/login">Log In</a>
+  </p>
 </main>

@@ -1,11 +1,11 @@
 import { createServerClient } from '@supabase/ssr'
 import { redirect } from '@sveltejs/kit'
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private'
 
 export const handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
-    PUBLIC_SUPABASE_URL,
-    PUBLIC_SUPABASE_ANON_KEY,
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
     {
       cookies: {
         get: (key) => event.cookies.get(key),
@@ -15,24 +15,27 @@ export const handle = async ({ event, resolve }) => {
         remove: (key, options) => {
           event.cookies.delete(key, { ...options, path: '/' })
         },
-      },
+      }
     }
   )
 
-  event.locals.getSession = async () => {
-    const {
-      data: { session },
-    } = await event.locals.supabase.auth.getSession()
-    return session
-  }
+  // securely get the user session
+  const { data: { user } } = await event.locals.supabase.auth.getUser()
+  const { data: { session } } = await event.locals.supabase.auth.getSession()
 
-  const session = await event.locals.getSession()
+  event.locals.user = user
+  event.locals.session = session
 
-  if (!session && event.url.pathname !== '/login') {
+  const { pathname } = event.url
+
+  const unauthenticatedPaths = ['/', '/login', '/signup', '/auth/callback'];
+
+  // Protect routes
+  if (!event.locals.user && !unauthenticatedPaths.includes(pathname)) {
     throw redirect(303, '/login');
   }
 
-  if (session && event.url.pathname === '/login') {
+  if (event.locals.user && (pathname === '/login' || pathname === '/' || pathname === '/signup')) {
     throw redirect(303, '/contacts');
   }
 

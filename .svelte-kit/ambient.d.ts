@@ -26,36 +26,37 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const SUPABASE_URL: string;
-	export const SUPABASE_ANON_KEY: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
+	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLOR: string;
-	export const COLORTERM: string;
 	export const CommonProgramFiles: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const DEBUG: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_31400_1262719628: string;
-	export const EFC_31400_1592913036: string;
-	export const EFC_31400_2283032206: string;
-	export const EFC_31400_2775293581: string;
-	export const EFC_31400_3789132940: string;
-	export const GIT_ASKPASS: string;
+	export const EFC_11280_1262719628: string;
+	export const EFC_11280_1592913036: string;
+	export const EFC_11280_2283032206: string;
+	export const EFC_11280_2775293581: string;
+	export const EFC_11280_3789132940: string;
+	export const ELECTRON_RUN_AS_NODE: string;
+	export const GEMINI_CLI: string;
+	export const GEMINI_YOLO_MODE: string;
+	export const GOOGLE_APPLICATION_CREDENTIALS: string;
+	export const GOOGLE_CLOUD_PROJECT: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
 	export const INIT_CWD: string;
 	export const JAVA_HOME: string;
-	export const LANG: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
 	export const NODE: string;
 	export const NODE_ENV: string;
-	export const NODE_OPTIONS: string;
 	export const npm_command: string;
 	export const npm_config_cache: string;
 	export const npm_config_globalconfig: string;
@@ -73,6 +74,8 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
 	export const npm_package_json: string;
+	export const npm_package_name: string;
+	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
@@ -80,7 +83,7 @@ declare module '$env/static/private' {
 	export const OneDriveConsumer: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
-	export const Path: string;
+	export const PATH: string;
 	export const PATHEXT: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
@@ -94,22 +97,25 @@ declare module '$env/static/private' {
 	export const PUBLIC: string;
 	export const RTOOLS40_HOME: string;
 	export const SESSIONNAME: string;
+	export const SURFACE: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
 	export const TEMP: string;
-	export const TERM_PROGRAM: string;
-	export const TERM_PROGRAM_VERSION: string;
 	export const TMP: string;
 	export const USERDOMAIN: string;
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
-	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-	export const VSCODE_GIT_ASKPASS_MAIN: string;
-	export const VSCODE_GIT_ASKPASS_NODE: string;
-	export const VSCODE_GIT_IPC_HANDLE: string;
-	export const VSCODE_INJECTION: string;
-	export const VSCODE_INSPECTOR_OPTIONS: string;
+	export const USE_CCPA: string;
+	export const VSCODE_CODE_CACHE_PATH: string;
+	export const VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
+	export const VSCODE_CWD: string;
+	export const VSCODE_ESM_ENTRYPOINT: string;
+	export const VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
+	export const VSCODE_IPC_HOOK: string;
+	export const VSCODE_L10N_BUNDLE_LOCATION: string;
+	export const VSCODE_NLS_CONFIG: string;
+	export const VSCODE_PID: string;
 	export const windir: string;
 	export const ZES_ENABLE_SYSMAN: string;
 }
@@ -124,8 +130,7 @@ declare module '$env/static/private' {
  * ```
  */
 declare module '$env/static/public' {
-	export const PUBLIC_SUPABASE_URL: string;
-	export const PUBLIC_SUPABASE_ANON_KEY: string;
+	
 }
 
 /**
@@ -144,36 +149,37 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		SUPABASE_URL: string;
-		SUPABASE_ANON_KEY: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
+		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLOR: string;
-		COLORTERM: string;
 		CommonProgramFiles: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		DEBUG: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_31400_1262719628: string;
-		EFC_31400_1592913036: string;
-		EFC_31400_2283032206: string;
-		EFC_31400_2775293581: string;
-		EFC_31400_3789132940: string;
-		GIT_ASKPASS: string;
+		EFC_11280_1262719628: string;
+		EFC_11280_1592913036: string;
+		EFC_11280_2283032206: string;
+		EFC_11280_2775293581: string;
+		EFC_11280_3789132940: string;
+		ELECTRON_RUN_AS_NODE: string;
+		GEMINI_CLI: string;
+		GEMINI_YOLO_MODE: string;
+		GOOGLE_APPLICATION_CREDENTIALS: string;
+		GOOGLE_CLOUD_PROJECT: string;
 		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
 		INIT_CWD: string;
 		JAVA_HOME: string;
-		LANG: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
 		NODE: string;
 		NODE_ENV: string;
-		NODE_OPTIONS: string;
 		npm_command: string;
 		npm_config_cache: string;
 		npm_config_globalconfig: string;
@@ -191,6 +197,8 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
 		npm_package_json: string;
+		npm_package_name: string;
+		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
@@ -198,7 +206,7 @@ declare module '$env/dynamic/private' {
 		OneDriveConsumer: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
-		Path: string;
+		PATH: string;
 		PATHEXT: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
@@ -212,22 +220,25 @@ declare module '$env/dynamic/private' {
 		PUBLIC: string;
 		RTOOLS40_HOME: string;
 		SESSIONNAME: string;
+		SURFACE: string;
 		SystemDrive: string;
 		SystemRoot: string;
 		TEMP: string;
-		TERM_PROGRAM: string;
-		TERM_PROGRAM_VERSION: string;
 		TMP: string;
 		USERDOMAIN: string;
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
-		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-		VSCODE_GIT_ASKPASS_MAIN: string;
-		VSCODE_GIT_ASKPASS_NODE: string;
-		VSCODE_GIT_IPC_HANDLE: string;
-		VSCODE_INJECTION: string;
-		VSCODE_INSPECTOR_OPTIONS: string;
+		USE_CCPA: string;
+		VSCODE_CODE_CACHE_PATH: string;
+		VSCODE_CRASH_REPORTER_PROCESS_TYPE: string;
+		VSCODE_CWD: string;
+		VSCODE_ESM_ENTRYPOINT: string;
+		VSCODE_HANDLES_UNCAUGHT_ERRORS: string;
+		VSCODE_IPC_HOOK: string;
+		VSCODE_L10N_BUNDLE_LOCATION: string;
+		VSCODE_NLS_CONFIG: string;
+		VSCODE_PID: string;
 		windir: string;
 		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
@@ -249,8 +260,6 @@ declare module '$env/dynamic/private' {
  */
 declare module '$env/dynamic/public' {
 	export const env: {
-		PUBLIC_SUPABASE_URL: string;
-		PUBLIC_SUPABASE_ANON_KEY: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
 }

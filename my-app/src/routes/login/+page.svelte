@@ -22,7 +22,6 @@
       }
 
       // On successful login, SvelteKit's hooks will handle the redirect.
-      goto('/contacts');
 
     } catch (error) {
       errorMessage = error.message;
@@ -70,8 +69,9 @@
     >
       {loading ? 'Loading...' : 'Log In'}
     </button>
-    <div style="text-align: center; margin-top: 1rem;">
-      <a href="/auth/forgot-password" style="color: #007bff; text-decoration: none;">Forgot Password?</a>
-    </div>
   </form>
+
+  <p style="text-align: center; margin-top: 1rem;">
+    Don't have an account? <a href="/signup">Sign Up</a>
+  </p>
 </main>

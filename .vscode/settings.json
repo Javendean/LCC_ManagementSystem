@@ -14,5 +14,9 @@
   },
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "geminicodeassist.agentYoloMode": true,
+  "geminicodeassist.agentDebugMode": true,
+  "geminicodeassist.project": "gold-chassis-227519",
+  "geminicodeassist.updateChannel": "Insiders"
 }
