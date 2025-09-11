@@ -1,12 +1,12 @@
 <script>
-  import { writable, derived } from 'svelte/store';
+  import { writable } from 'svelte/store';
   import {
     createSvelteTable,
     flexRender,
     getCoreRowModel,
     getFilteredRowModel,
     getPaginationRowModel,
-    getSortedRowModel
+    getSortedRowModel,
   } from '@tanstack/svelte-table';
   import { columns } from './columns.js';
 
@@ -18,7 +18,7 @@
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel()
+    getSortedRowModel: getSortedRowModel(),
   });
 
   const globalFilter = writable('');
@@ -42,10 +42,13 @@
             {#each headerGroup.headers as header}
               <th class="p-2 text-left">
                 <button on:click={header.getToggleSortingHandler()}>
-                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext(),
+                  )}
                   {{
                     asc: ' 🔼',
-                    desc: ' 🔽'
+                    desc: ' 🔽',
                   }[header.column.getIsSorted()] ?? ''}
                 </button>
               </th>
@@ -57,7 +60,9 @@
         {#each $table.getRowModel().rows as row}
           <tr>
             {#each row.getVisibleCells() as cell}
-              <td class="p-2">{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+              <td class="p-2"
+                >{flexRender(cell.column.columnDef.cell, cell.getContext())}</td
+              >
             {/each}
           </tr>
         {/each}
@@ -66,8 +71,12 @@
   </div>
   <div class="flex items-center justify-between mt-4">
     <div class="text-sm text-muted-foreground">
-      Showing {$table.getState().pagination.pageIndex * $table.getState().pagination.pageSize + 1}
-      - {$table.getState().pagination.pageIndex * $table.getState().pagination.pageSize + $table.getRowModel().rows.length}
+      Showing {$table.getState().pagination.pageIndex *
+        $table.getState().pagination.pageSize +
+        1}
+      - {$table.getState().pagination.pageIndex *
+        $table.getState().pagination.pageSize +
+        $table.getRowModel().rows.length}
       of {$table.getRowCount()} rows.
     </div>
     <div class="flex items-center space-x-2">

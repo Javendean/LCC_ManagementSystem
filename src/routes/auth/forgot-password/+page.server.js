@@ -8,9 +8,12 @@ export const actions = {
       return { error: 'Email is required.' };
     }
 
-    const { error: authError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${url.origin}/auth/update-password`,
-    });
+    const { error: authError } = await supabase.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo: `${url.origin}/auth/update-password`,
+      },
+    );
 
     if (authError) {
       return { error: authError.message };

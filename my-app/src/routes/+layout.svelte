@@ -1,11 +1,11 @@
 <script>
-  import { onMount } from 'svelte'
-  import { supabase } from '$lib/supabaseClient'
-  import { invalidateAll, goto } from '$app/navigation'
+  import { onMount } from 'svelte';
+  import { supabase } from '$lib/supabaseClient';
+  import { invalidateAll, goto } from '$app/navigation';
 
-  export let data
+  export let data;
 
-  $: ({ session } = data)
+  $: ({ session } = data);
 
   onMount(() => {
     console.log('Layout mounted, setting up onAuthStateChange listener.');
@@ -19,18 +19,18 @@
         console.log('PASSWORD_RECOVERY event detected, redirecting...');
         goto('/auth/update-password');
       }
-      
+
       if (newSession?.expires_at !== session?.expires_at) {
         console.log('Session expired or changed, invalidating...');
-        invalidateAll()
+        invalidateAll();
       }
-    })
+    });
 
     return () => {
       console.log('Layout unmounted, unsubscribing from onAuthStateChange.');
-      subscription.unsubscribe()
-    }
-  })
+      subscription.unsubscribe();
+    };
+  });
 </script>
 
 <slot />

@@ -60,12 +60,15 @@ RUBE_MULTI_EXECUTE_TOOL(
 Let's say you want to send an email.
 
 1.  **Discover:**
+
     ```
     RUBE_SEARCH_TOOLS(use_case="send an email")
     ```
+
     This might return a tool like `GMAIL_SEND_EMAIL`.
 
 2.  **Plan:**
+
     ```
     RUBE_CREATE_PLAN(
         use_case="send an email",

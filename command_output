@@ -1,0 +1,130 @@
+> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file -
+
+> lcc-mgmt@0.0.1 lint
+> prettier --check . && eslint .
+
+Checking formatting...
+[[33mwarn[39m] [33msvelteBracketNewLine[39m is deprecated.
+[[33mwarn[39m] .eslintrc.json
+[[33mwarn[39m] .prettierrc.json
+[[33mwarn[39m] .svelte-kit/ambient.d.ts
+[[33mwarn[39m] .svelte-kit/generated/client/app.js
+[[33mwarn[39m] .svelte-kit/generated/client/matchers.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/0.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/1.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/2.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/3.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/4.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/5.js
+[[33mwarn[39m] .svelte-kit/generated/client/nodes/6.js
+[[33mwarn[39m] .svelte-kit/generated/root.js
+[[33mwarn[39m] .svelte-kit/generated/root.svelte
+[[33mwarn[39m] .svelte-kit/generated/server/internal.js
+[[33mwarn[39m] .svelte-kit/non-ambient.d.ts
+[[33mwarn[39m] .svelte-kit/tsconfig.json
+[[33mwarn[39m] .vscode/launch.json
+[[33mwarn[39m] .vscode/settings.json
+[[33mwarn[39m] .vscode/tasks.json
+[[33mwarn[39m] Auth_Remediation_Plan_v2.md
+[[33mwarn[39m] Auth_Remediation_Plan.md
+[[33mwarn[39m] Auth_Review_Findings.md
+[[33mwarn[39m] Comprehensive_Auth_Remediation_Plan.md
+[[33mwarn[39m] Critical_Analysis_Of_Auth_Review.md
+[[33mwarn[39m] Focused_Login_Troubleshooting_Plan.md
+[[33mwarn[39m] GEMINI.md
+[[33mwarn[39m] Instructions.md
+[[33mwarn[39m] Login_Troubleshooting_Plan.md
+[[33mwarn[39m] MostRecentError.md
+[[33mwarn[39m] my-app/.svelte-kit/ambient.d.ts
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/app.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/matchers.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/0.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/1.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/2.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/3.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/4.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/5.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/client/nodes/6.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/root.js
+[[33mwarn[39m] my-app/.svelte-kit/generated/root.svelte
+[[33mwarn[39m] my-app/.svelte-kit/generated/server/internal.js
+[[33mwarn[39m] my-app/.svelte-kit/non-ambient.d.ts
+[[33mwarn[39m] my-app/.svelte-kit/tsconfig.json
+[[33mwarn[39m] my-app/jsconfig.json
+[[33mwarn[39m] my-app/package-lock.json
+[[33mwarn[39m] my-app/package.json
+[[33mwarn[39m] my-app/src/app.html
+[[33mwarn[39m] my-app/src/hooks.server.js
+[[33mwarn[39m] my-app/src/lib/components/contacts-data-table/columns.js
+[[31merror[39m] my-app/src/lib/components/contacts-data-table/DataTable.svelte: Unexpected character '@'
+[[31merror[39m] [0m [90m  8 |[39m 		getSortedRowModel
+[[31merror[39m]  [90m  9 |[39m 	} [36mfrom[39m [32m'@tanstack/svelte-table'[39m[33m;[39m
+[[31merror[39m] [31m[1m>[22m[39m[90m 10 |[39m 	[36mimport[39m { columns } [36mfrom[39m [32m'./columns.js'[39m[33m;[39m
+[[31merror[39m]  [90m    |[39m 	             [31m[1m^[22m[39m
+[[31merror[39m]  [90m 11 |[39m 	[90m// import * as Table from '$lib/components/ui/table';[39m
+[[31merror[39m]  [90m 12 |[39m 	[90m// import { Input } from '$lib/components/ui/input';[39m
+[[31merror[39m]  [90m 13 |[39m 	[90m// import { Button } from '$lib/components/ui/button';[39m[0m (10:15)
+[[31merror[39m]  8:           {#each headerGroup.headers as header}
+[[31merror[39m]  9:             <Table.Head>
+[[31merror[39m] 10:               {@render flexRender(header.column.columnDef.header, header.getContext())}
+[[31merror[39m]                    ^
+[[31merror[39m] 11:             </Table.Head>
+[[31merror[39m] 12:           {/each}
+[[33mwarn[39m] my-app/src/lib/components/contacts-data-table/DataTableNew.svelte
+[[33mwarn[39m] my-app/src/lib/components/CSVUploader.svelte
+[[33mwarn[39m] my-app/src/lib/components/MessageModal.svelte
+[[33mwarn[39m] my-app/src/lib/supabaseClient.js
+[[33mwarn[39m] my-app/src/lib/types.js
+[[33mwarn[39m] my-app/src/routes/+layout.server.js
+[[33mwarn[39m] my-app/src/routes/+layout.svelte
+[[33mwarn[39m] my-app/src/routes/+page.svelte
+[[33mwarn[39m] my-app/src/routes/api/send-message/+server.js
+[[33mwarn[39m] my-app/src/routes/api/upload-csv/+server.js
+[[33mwarn[39m] my-app/src/routes/auth/update-password/+page.svelte
+[[33mwarn[39m] my-app/src/routes/contacts/+page.server.js
+[[33mwarn[39m] my-app/src/routes/contacts/+page.svelte
+[[33mwarn[39m] my-app/src/routes/login/+page.svelte
+[[33mwarn[39m] my-app/src/routes/signup/+page.svelte
+[[33mwarn[39m] my-app/svelte.config.js
+[[33mwarn[39m] my-app/vite.config.js
+[[33mwarn[39m] Privy.md
+[[33mwarn[39m] Rube_Tool_Usage_Guide.md
+[[33mwarn[39m] src/app.html
+[[33mwarn[39m] src/hooks.server.js
+[[33mwarn[39m] src/lib/components/contacts-data-table/columns.js
+[[31merror[39m] src/lib/components/contacts-data-table/DataTable.svelte: Unexpected character '@'
+[[31merror[39m] [0m [90m  8 |[39m 		getSortedRowModel
+[[31merror[39m]  [90m  9 |[39m 	} [36mfrom[39m [32m'@tanstack/svelte-table'[39m[33m;[39m
+[[31merror[39m] [31m[1m>[22m[39m[90m 10 |[39m 	[36mimport[39m { columns } [36mfrom[39m [32m'./columns.js'[39m[33m;[39m
+[[31merror[39m]  [90m    |[39m 	             [31m[1m^[22m[39m
+[[31merror[39m]  [90m 11 |[39m 	[36mimport[39m [33m*[39m [36mas[39m [33mTable[39m [36mfrom[39m [32m'$lib/components/ui/table'[39m[33m;[39m
+[[31merror[39m]  [90m 12 |[39m 	[36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'$lib/components/ui/input'[39m[33m;[39m
+[[31merror[39m]  [90m 13 |[39m 	[36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'$lib/components/ui/button'[39m[33m;[39m[0m (10:15)
+[[31merror[39m]  8:           {#each headerGroup.headers as header}
+[[31merror[39m]  9:             <Table.Head>
+[[31merror[39m] 10:               {@render flexRender(header.column.columnDef.header, header.getContext())}
+[[31merror[39m]                    ^
+[[31merror[39m] 11:             </Table.Head>
+[[31merror[39m] 12:           {/each}
+[[33mwarn[39m] src/lib/components/contacts-data-table/DataTableNew.svelte
+[[33mwarn[39m] src/lib/components/CSVUploader.svelte
+[[33mwarn[39m] src/lib/components/MessageModal.svelte
+[[33mwarn[39m] src/lib/supabaseClient.js
+[[33mwarn[39m] src/lib/types.js
+[[33mwarn[39m] src/routes/+layout.server.js
+[[33mwarn[39m] src/routes/+layout.svelte
+[[33mwarn[39m] src/routes/api/send-message/+server.js
+[[33mwarn[39m] src/routes/api/upload-csv/+server.js
+[[33mwarn[39m] src/routes/auth/forgot-password/+page.server.js
+[[33mwarn[39m] src/routes/auth/forgot-password/+page.svelte
+[[33mwarn[39m] src/routes/auth/update-password/+page.svelte
+[[33mwarn[39m] src/routes/contacts/+page.server.js
+[[33mwarn[39m] src/routes/contacts/+page.svelte
+[[33mwarn[39m] src/routes/login/+page.svelte
+[[33mwarn[39m] svelte.config.js
+[[33mwarn[39m] SvelteAuth.md
+[[33mwarn[39m] test-results/.last-run.json
+[[33mwarn[39m] tests/example.spec.ts
+[[33mwarn[39m] vite.config.js
+Error occurred when checking code style in 2 files.
+husky - pre-commit script failed (code 2)

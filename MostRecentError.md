@@ -1,4 +1,4 @@
-```
+````
 # Gemini Task: Implement Production-Grade SvelteKit SSR Authentication
 
 **Task ID:** `5.3_RLS_Policies`
@@ -51,7 +51,7 @@ This file instructs the Gemini Coding Assistant to implement the definitive, off
 ```bash
 npm install @supabase/ssr
 
-```
+````
 
 #### Step 2: Update Supabase Client
 

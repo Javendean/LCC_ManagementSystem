@@ -25,10 +25,12 @@ export async function POST({ request, locals: { supabase, user } }) {
             first_name: row['First Name'],
             last_name: row['Last Name'],
             phone_number: row['Phone Number'],
-            user_id: user.id
+            user_id: user.id,
           }));
 
-          const { error: dbError } = await supabase.from('contacts').upsert(contacts);
+          const { error: dbError } = await supabase
+            .from('contacts')
+            .upsert(contacts);
 
           if (dbError) {
             throw error(500, { message: dbError.message });
@@ -41,7 +43,7 @@ export async function POST({ request, locals: { supabase, user } }) {
       },
       error: (err) => {
         reject(error(400, { message: err.message }));
-      }
+      },
     });
   });
 }

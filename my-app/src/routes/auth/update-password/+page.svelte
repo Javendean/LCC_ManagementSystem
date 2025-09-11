@@ -15,8 +15,8 @@
       return;
     }
     if (password.length < 6) {
-        errorMessage = 'Password must be at least 6 characters.';
-        return;
+      errorMessage = 'Password must be at least 6 characters.';
+      return;
     }
 
     loading = true;
@@ -30,12 +30,12 @@
         throw error;
       }
 
-      successMessage = 'Password updated successfully! You will be redirected to the login page shortly.';
-      
+      successMessage =
+        'Password updated successfully! You will be redirected to the login page shortly.';
+
       setTimeout(() => {
         goto('/login');
       }, 3000);
-
     } catch (error) {
       errorMessage = error.message;
     } finally {
@@ -50,7 +50,9 @@
 
   <form on:submit|preventDefault={handleUpdatePassword}>
     <div style="margin-bottom: 1rem;">
-      <label for="password" style="display: block; margin-bottom: 0.25rem;">New Password</label>
+      <label for="password" style="display: block; margin-bottom: 0.25rem;"
+        >New Password</label
+      >
       <input
         id="password"
         type="password"
@@ -61,7 +63,11 @@
     </div>
 
     <div style="margin-bottom: 1rem;">
-      <label for="confirmPassword" style="display: block; margin-bottom: 0.25rem;">Confirm New Password</label>
+      <label
+        for="confirmPassword"
+        style="display: block; margin-bottom: 0.25rem;"
+        >Confirm New Password</label
+      >
       <input
         id="confirmPassword"
         type="password"

@@ -23,8 +23,8 @@
         throw error;
       }
 
-      successMessage = 'Success! Please check your email for a confirmation link.';
-
+      successMessage =
+        'Success! Please check your email for a confirmation link.';
     } catch (error) {
       errorMessage = error.message;
     } finally {
@@ -39,7 +39,9 @@
 
   <form on:submit|preventDefault={handleSignUp}>
     <div style="margin-bottom: 1rem;">
-      <label for="email" style="display: block; margin-bottom: 0.25rem;">Email</label>
+      <label for="email" style="display: block; margin-bottom: 0.25rem;"
+        >Email</label
+      >
       <input
         id="email"
         type="email"
@@ -50,7 +52,9 @@
     </div>
 
     <div style="margin-bottom: 1rem;">
-      <label for="password" style="display: block; margin-bottom: 0.25rem;">Password</label>
+      <label for="password" style="display: block; margin-bottom: 0.25rem;"
+        >Password</label
+      >
       <input
         id="password"
         type="password"

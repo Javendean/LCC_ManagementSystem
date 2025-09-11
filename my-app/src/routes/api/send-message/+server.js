@@ -1,6 +1,10 @@
 import { json, error } from '@sveltejs/kit';
 import twilio from 'twilio';
-import { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } from '$env/static/private';
+import {
+  TWILIO_ACCOUNT_SID,
+  TWILIO_AUTH_TOKEN,
+  TWILIO_PHONE_NUMBER,
+} from '$env/static/private';
 
 const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
@@ -21,7 +25,7 @@ export async function POST({ request, locals: { getSession } }) {
       return client.messages.create({
         body: message,
         from: TWILIO_PHONE_NUMBER,
-        to: contact.phone_number
+        to: contact.phone_number,
       });
     });
 

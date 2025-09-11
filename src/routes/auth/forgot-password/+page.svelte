@@ -5,10 +5,15 @@
 
 <div class="flex items-center justify-center h-screen">
   <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold text-center text-gray-900">Forgot Password</h2>
+    <h2 class="text-2xl font-bold text-center text-gray-900">
+      Forgot Password
+    </h2>
 
     {#if form?.success}
-      <div class="p-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+      <div
+        class="p-4 text-sm text-green-700 bg-green-100 rounded-lg"
+        role="alert"
+      >
         Password reset link has been sent to your email.
       </div>
     {:else if form?.error}
@@ -17,13 +22,18 @@
       </div>
     {/if}
 
-    <form method="POST" use:enhance={() => {
-      return async ({ result }) => {
-        form = result.data;
-      };
-    }}>
+    <form
+      method="POST"
+      use:enhance={() => {
+        return async ({ result }) => {
+          form = result.data;
+        };
+      }}
+    >
       <div>
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900"
+          >Email</label
+        >
         <input
           type="email"
           name="email"

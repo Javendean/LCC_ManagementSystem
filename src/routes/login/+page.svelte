@@ -23,7 +23,6 @@
 
       // On successful login, SvelteKit's hooks will handle the redirect.
       goto('/contacts');
-
     } catch (error) {
       errorMessage = error.message;
     } finally {
@@ -38,7 +37,9 @@
 
   <form on:submit|preventDefault={handleLogin}>
     <div style="margin-bottom: 1rem;">
-      <label for="email" style="display: block; margin-bottom: 0.25rem;">Email</label>
+      <label for="email" style="display: block; margin-bottom: 0.25rem;"
+        >Email</label
+      >
       <input
         id="email"
         type="email"
@@ -49,7 +50,9 @@
     </div>
 
     <div style="margin-bottom: 1rem;">
-      <label for="password" style="display: block; margin-bottom: 0.25rem;">Password</label>
+      <label for="password" style="display: block; margin-bottom: 0.25rem;"
+        >Password</label
+      >
       <input
         id="password"
         type="password"
@@ -71,7 +74,10 @@
       {loading ? 'Loading...' : 'Log In'}
     </button>
     <div style="text-align: center; margin-top: 1rem;">
-      <a href="/auth/forgot-password" style="color: #007bff; text-decoration: none;">Forgot Password?</a>
+      <a
+        href="/auth/forgot-password"
+        style="color: #007bff; text-decoration: none;">Forgot Password?</a
+      >
     </div>
   </form>
 </main>

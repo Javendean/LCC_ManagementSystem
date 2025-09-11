@@ -1,17 +1,15 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Open Gemini Agent Settings",
-            "type": "shell",
-            "command": "code",
-            "args": [
-                "${env:USERPROFILE}/.gemini/settings.json"
-            ],
-            "presentation": {
-                "reveal": "never"
-            },
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Gemini Agent Settings",
+      "type": "shell",
+      "command": "code",
+      "args": ["${env:USERPROFILE}/.gemini/settings.json"],
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": []
+    }
+  ]
 }

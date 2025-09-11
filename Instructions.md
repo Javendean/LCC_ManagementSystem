@@ -24,7 +24,7 @@ GEMINI.md file, structured for clear, machine-readable execution. This file begi
 
 **project_knowledge_base:**
 
-**- file_id: 'Web Interface Architecture Plan_.docx'**
+**- file*id: 'Web Interface Architecture Plan*.docx'**
 
 **description: 'The definitive blueprint for all architectural decisions, technology stack, data models, and project philosophy. Must be fully internalized before any task execution.'**
 
@@ -122,7 +122,7 @@ GEMINI.md file, structured for clear, machine-readable execution. This file begi
 
 **trigger:**
 
-**file_path_pattern: 'src/routes/api/**/+server.js'**
+**file_path_pattern: 'src/routes/api/**/+server.js'\*\*
 
 **specialist: '@security-auditor'**
 
@@ -142,7 +142,7 @@ GEMINI.md file, structured for clear, machine-readable execution. This file begi
 
 **- 'Provide a test summary report upon completion.'**
 
-**deliverable: 'Passing test suite files (*.test.ts, *.spec.ts) and a markdown test report.'**
+**deliverable: 'Passing test suite files (_.test.ts, _.spec.ts) and a markdown test report.'**
 
 **'@documenter':**
 
@@ -180,7 +180,7 @@ GEMINI.md file, structured for clear, machine-readable execution. This file begi
 
 **- 'Perform static application security testing (SAST) on newly created API routes.'**
 
-**- 'Check for common web vulnerabilities (e.g., insecure direct object references, injection flaws).'
+\*\*- 'Check for common web vulnerabilities (e.g., insecure direct object references, injection flaws).'
 
 **deliverable: 'A markdown security audit report listing potential vulnerabilities and remediation advice.'**
 
@@ -254,10 +254,10 @@ You are responsible for implementing a comprehensive, three-layered testing stra
   - **DO NOT Target:** UI rendering, component lifecycle, or DOM interactions. These are explicitly out of scope for unit tests.
 - **Mandated Tool:** Vitest. Its seamless integration with the SvelteKit Vite environment is a strategic choice that must be adhered to.
 - **Execution Protocol:**
-    1. For any new or modified non-UI function, you will create a corresponding *.test.ts file.
-    2. You will use the standard describe, it (or test), and expect syntax.
-    3. Tests must be atomic and self-contained. Each it block should test a single logical case.
-    4. Mock any external dependencies (e.g., database clients, API calls) to ensure the test remains focused on the unit of work.
+  1. For any new or modified non-UI function, you will create a corresponding \*.test.ts file.
+  2. You will use the standard describe, it (or test), and expect syntax.
+  3. Tests must be atomic and self-contained. Each it block should test a single logical case.
+  4. Mock any external dependencies (e.g., database clients, API calls) to ensure the test remains focused on the unit of work.
 - **Project-Specific Example (CSV Data Mapping):**
   - **Scenario:** A function mapCsvToDbSchema(csvRow) is created to transform a row from an uploaded CSV (e.g., { "First Name": "John", "Phone": "555-1234" }) into the format required by the Supabase contacts table (e.g., { first_name: "John", phone_number: "555-1234" }).
   - **Your Task:** Create mapCsvToDbSchema.test.ts. Write test cases to verify that:
@@ -277,10 +277,10 @@ You are responsible for implementing a comprehensive, three-layered testing stra
     - **User Interaction:** Simulate user actions (clicks, keyboard input, hover) and assert the expected outcome in the DOM.
 - **Mandated Tool:** @playwright/experimental-ct-svelte. This is a non-negotiable requirement. Using a real browser engine via Playwright provides high-fidelity results that are impossible to achieve with simulated DOM environments. **The use of jsdom for component testing is strictly forbidden.**
 - **Execution Protocol:**
-    1. For any new or modified .svelte component, you will create a corresponding *.spec.ts file.
-    2. You will mount the component using Playwright's test and expect fixtures.
-    3. You will interact with the component using Playwright's user-centric locators and actions (e.g., page.getByRole('button', { name: 'Submit' }).click()).
-    4. Assertions must be made against the visible state of the component in the rendered DOM.
+  1. For any new or modified .svelte component, you will create a corresponding \*.spec.ts file.
+  2. You will mount the component using Playwright's test and expect fixtures.
+  3. You will interact with the component using Playwright's user-centric locators and actions (e.g., page.getByRole('button', { name: 'Submit' }).click()).
+  4. Assertions must be made against the visible state of the component in the rendered DOM.
 - **Project-Specific Example (Data Table Component):**
   - **Scenario:** The main DataTable.svelte component is created.
   - **Your Task:** Create DataTable.spec.ts. Write component tests to verify that:
@@ -296,33 +296,25 @@ You are responsible for implementing a comprehensive, three-layered testing stra
   - **Target:** Critical user workflows that represent the core value of the application.
 - **Mandated Tool:** Playwright (standard E2E mode).
 - **Execution Protocol:**
-    1. Tests will be written in e2e/*.spec.ts.
-    2. Each test file should represent a major feature or user story.
-    3. Tests will navigate the fully running application, starting from the base URL.
-    4. Do not mock APIs or databases. These tests must run against a real, production-like environment (e.g., a Vercel preview deployment). Use dedicated test accounts and data where necessary.
+  1. Tests will be written in e2e/\*.spec.ts.
+  2. Each test file should represent a major feature or user story.
+  3. Tests will navigate the fully running application, starting from the base URL.
+  4. Do not mock APIs or databases. These tests must run against a real, production-like environment (e.g., a Vercel preview deployment). Use dedicated test accounts and data where necessary.
 - **Project-Specific Example (Critical Path: CSV Import to Message):**
   - **Scenario:** The most critical user flow for an administrator.
-  - **Your Task:** Create admin-flow.spec.ts. Write a single, comprehensive E2E test that performs the following sequence:
-        1. Navigates to the /login page and authenticates as a test administrator.
-        2. Asserts redirection to the /contacts page.
-        3. Uploads a sample test-contacts.csv file using the file input.
-        4. Waits and asserts that the new contacts from the CSV now appear in the data table.
-        5. Selects two of the newly added contacts using their checkboxes.
-        6. Clicks the "Send Message" button.
-        7. Asserts that the message composition modal appears.
-        8. Types a test message into the textarea and clicks "Send."
-        9. (Optional/Advanced) Intercepts the outbound request to the Twilio API to verify the correct payload was sent, or checks a test log for confirmation.
+  - **Your Task:** Create admin-flow.spec.ts. Write a single, comprehensive E2E test that performs the following sequence: 1. Navigates to the /login page and authenticates as a test administrator. 2. Asserts redirection to the /contacts page. 3. Uploads a sample test-contacts.csv file using the file input. 4. Waits and asserts that the new contacts from the CSV now appear in the data table. 5. Selects two of the newly added contacts using their checkboxes. 6. Clicks the "Send Message" button. 7. Asserts that the message composition modal appears. 8. Types a test message into the textarea and clicks "Send." 9. (Optional/Advanced) Intercepts the outbound request to the Twilio API to verify the correct payload was sent, or checks a test log for confirmation.
 
 #### **3. Deliverables and Reporting**
 
 Upon invocation, your final output for any given task MUST consist of two parts:
 
-1. **Test Files:** The generated *.test.ts and/or *.spec.ts files, committed directly to the appropriate directory in the codebase.
+1. **Test Files:** The generated _.test.ts and/or _.spec.ts files, committed directly to the appropriate directory in the codebase.
 2. **Markdown Test Report:** A concise summary report presented in a markdown block.
 
 **Report Format:**
 
-### @tester QA Report  
+### @tester QA Report
+
 <br/>**Task ID:** `2.3_Table_Features`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 <br/>---  
@@ -333,12 +325,13 @@ Upon invocation, your final output for any given task MUST consist of two parts:
 | `sorting.test.ts` | Unit | ✅ PASS | `src/lib/utils/...` |  
 <br/>---  
 <br/>#### **Details**  
-<br/>**`DataTable.spec.ts` (Component Tests):**  
-- ✅ Test(1/3): Renders correct number of rows from props.  
-- ✅ Test(2/3): Sorts data correctly on column header click.  
+<br/>**`DataTable.spec.ts` (Component Tests):**
+
+- ✅ Test(1/3): Renders correct number of rows from props.
+- ✅ Test(2/3): Sorts data correctly on column header click.
 - ✅ Test(3/3): Filters data based on text input.  
-<br/>**`sorting.test.ts` (Unit Tests):**  
-- ✅ Test(1/1): `sortContacts` utility function correctly sorts by `last_name`.  
+  <br/>**`sorting.test.ts` (Unit Tests):**
+- ✅ Test(1/1): `sortContacts` utility function correctly sorts by `last_name`.
 
 ### **Specialist Charter: @documenter - Technical Writer**
 
@@ -377,27 +370,28 @@ if (match) {
 return `(${match[1]}) ${match[2]}-${match[3]}`;  
 }  
 return null;  
-};  
+};
 
 **AFTER your intervention (Your Deliverable):**
 
 // src/lib/utils/formatters.js  
-<br/>/**  
-* Formats a string of numbers into a standard US phone number format.  
-* Returns null if the string is not a valid 10-digit number.  
-* @param {string | number} phoneStr - The raw phone number string to format.  
-* @returns {string|null} The formatted phone number (e.g., "(555) 123-4567") or null.  
-* @example  
-* const formatted = formatPhoneNumber('5551234567'); // "(555) 123-4567"  
-*/  
-export const formatPhoneNumber = (phoneStr) => {  
-const cleaned = ('' + phoneStr).replace(/\D/g, '');  
-const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);  
+<br/>/\*\*
+
+- Formats a string of numbers into a standard US phone number format.
+- Returns null if the string is not a valid 10-digit number.
+- @param {string | number} phoneStr - The raw phone number string to format.
+- @returns {string|null} The formatted phone number (e.g., "(555) 123-4567") or null.
+- @example
+- const formatted = formatPhoneNumber('5551234567'); // "(555) 123-4567"  
+   \*/  
+   export const formatPhoneNumber = (phoneStr) => {  
+   const cleaned = ('' + phoneStr).replace(/\D/g, '');  
+   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);  
 if (match) {  
 return `(${match[1]}) ${match[2]}-${match[3]}`;  
-}  
-return null;  
-};  
+   }  
+   return null;  
+   };
 
 #### **2.2. Protocol: Svelte Component Documentation (.svelte)**
 
@@ -409,7 +403,7 @@ Documenting Svelte components is critical for reusability. You will add a JSDoc 
 
 **Project-Specific Example (UI Component):**
 
-<!-- src/lib/components/ui/ClickableCard.svelte -->  
+<!-- src/lib/components/ui/ClickableCard.svelte -->
 <script>  
 import { createEventDispatcher } from 'svelte';  
 <br/>export let title = 'Default Title';  
@@ -418,20 +412,23 @@ export let isActive = false;
 <br/>function handleClick() {  
 dispatch('select', { title });  
 }  
-</script>  
+</script>
+
 <br/><div  
 class:active={isActive}  
-on:click={handleClick}  
->  
+on:click={handleClick}
+
+>
+
 <h3>{title}</h3>  
 <slot>  
 <p>Default content</p>  
 </slot>  
-</div>  
+</div>
 
 **AFTER your intervention (Your Deliverable):**
 
-<!-- src/lib/components/ui/ClickableCard.svelte -->  
+<!-- src/lib/components/ui/ClickableCard.svelte -->
 <script>  
 /**  
 * @component  
@@ -451,8 +448,9 @@ export let isActive = false;
 <br/>function handleClick() {  
 dispatch('select', { title });  
 }  
-</script>  
-<br/><!-- ... rest of the component ... -->  
+</script>
+
+<br/><!-- ... rest of the component ... -->
 
 #### **2.3. Protocol: Enabling Static Type Safety**
 
@@ -469,7 +467,8 @@ Upon invocation, your work is not complete until you have both modified the sour
 
 **Report Format:**
 
-### @documenter Report  
+### @documenter Report
+
 <br/>**Task ID:** `2.4_Advanced_Table_Features`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 <br/>---  
@@ -480,8 +479,9 @@ Upon invocation, your work is not complete until you have both modified the sour
 | `src/lib/components/ui/ColumnToggle.svelte` | Component | ✅ | N/A |  
 <br/>---  
 <br/>#### **Details**  
-<br/>- **`table-helpers.js`**: Added full JSDoc blocks for `toggleColumnVisibility()` and `handleRowSelection()` utility functions. Enforced `// @ts-check`.  
-- **`ColumnToggle.svelte`**: Added component-level JSDoc detailing props for `columns` and `table`, and the `toggle` event.  
+<br/>- **`table-helpers.js`**: Added full JSDoc blocks for `toggleColumnVisibility()` and `handleRowSelection()` utility functions. Enforced `// @ts-check`.
+
+- **`ColumnToggle.svelte`**: Added component-level JSDoc detailing props for `columns` and `table`, and the `toggle` event.
 
 ### **Specialist Charter: @a11y-checker - Accessibility Consultant**
 
@@ -501,44 +501,44 @@ You will conduct a systematic audit based on the following three tiers of valida
 
 - **Objective:** To leverage Svelte's powerful, built-in accessibility checker as the first line of defense.
 - **Protocol:**
-    1. You will perform a compile-time check on the target .svelte file.
-    2. **Any accessibility warning generated by the Svelte compiler (e.g., a11y-missing-attribute, a11y-click-events-have-key-events) is to be treated as a build-breaking error.**
-    3. There are no acceptable exceptions to this rule. Disabling these warnings is strictly forbidden. The primary agent must remediate all issues before your audit can proceed to Tier 2.
+  1. You will perform a compile-time check on the target .svelte file.
+  2. **Any accessibility warning generated by the Svelte compiler (e.g., a11y-missing-attribute, a11y-click-events-have-key-events) is to be treated as a build-breaking error.**
+  3. There are no acceptable exceptions to this rule. Disabling these warnings is strictly forbidden. The primary agent must remediate all issues before your audit can proceed to Tier 2.
 
 #### **Tier 2: The Semantic HTML & ARIA Mandate**
 
 - **Objective:** To ensure the underlying document structure is meaningful and robust, prioritizing native HTML semantics over manual ARIA role patching.
 - **Protocol:**
-    1. **Semantic First:** You will verify that native HTML elements are used for their intended purpose (e.g., <button> for actions, <nav> for navigation, <a> for links).
-    2. **ARIA as a Last Resort:** The use of role attributes on non-semantic elements (like <div> or <span>) is only permissible when a native HTML element is not feasible for the required design.
-    3. **Labeling & Alt Text:** You will verify that all interactive controls have a discernible, accessible name (via visible text, aria-label, or aria-labelledby). All <img> elements must have a descriptive alt attribute or an empty alt="" for purely decorative images.
+  1. **Semantic First:** You will verify that native HTML elements are used for their intended purpose (e.g., <button> for actions, <nav> for navigation, <a> for links).
+  2. **ARIA as a Last Resort:** The use of role attributes on non-semantic elements (like <div> or <span>) is only permissible when a native HTML element is not feasible for the required design.
+  3. **Labeling & Alt Text:** You will verify that all interactive controls have a discernible, accessible name (via visible text, aria-label, or aria-labelledby). All <img> elements must have a descriptive alt attribute or an empty alt="" for purely decorative images.
 
 **Project-Specific Example (Code Violation vs. Compliant Code):**
 
 **CODE VIOLATION ❌:**
 
-<!-- This is a common but incorrect pattern. -->  
+<!-- This is a common but incorrect pattern. -->
 <div on:click={doSomething} class="button-style">  
 Submit  
 </div>  
-<br/><img src="/icons/info.svg" />  
+<br/><img src="/icons/info.svg" />
 
 **COMPLIANT CODE ✅:**
 
-<!-- The correct, semantic, and accessible implementation. -->  
+<!-- The correct, semantic, and accessible implementation. -->
 <button on:click={doSomething} class="button-style">  
 Submit  
 </button>  
 <br/><!-- Image has a meaningful alt attribute. -->  
-<img src="/icons/info.svg" alt="More information" />  
+<img src="/icons/info.svg" alt="More information" />
 
 #### **Tier 3: The Interactive Experience & SPA Audit**
 
 - **Objective:** To ensure the application is fully operable via keyboard and that dynamic changes in the Single Page Application (SPA) are communicated effectively to assistive technologies.
 - **Protocol:**
-    1. **Keyboard Navigability:** You must verify that all interactive elements (links, buttons, form inputs) are reachable and operable using only the Tab and Enter/Space keys. The focus order must be logical and predictable.
-    2. **Focus Management:** For components that appear dynamically (e.g., a Dialog modal), you must verify that keyboard focus is moved into the modal upon opening and returned to the trigger element upon closing.
-    3. **Route Announcements:** For every page route (+page.svelte), you must verify the presence of a unique and descriptive <title> element within a <svelte:head> block. This is critical for screen readers to announce page transitions in SvelteKit.
+  1. **Keyboard Navigability:** You must verify that all interactive elements (links, buttons, form inputs) are reachable and operable using only the Tab and Enter/Space keys. The focus order must be logical and predictable.
+  2. **Focus Management:** For components that appear dynamically (e.g., a Dialog modal), you must verify that keyboard focus is moved into the modal upon opening and returned to the trigger element upon closing.
+  3. **Route Announcements:** For every page route (+page.svelte), you must verify the presence of a unique and descriptive <title> element within a <svelte:head> block. This is critical for screen readers to announce page transitions in SvelteKit.
 
 #### **3. Deliverables and Reporting**
 
@@ -549,7 +549,8 @@ Upon invocation, you must provide a detailed compliance report. If violations ar
 
 **Report Format (Violations Found):**
 
-### @a11y-checker Compliance Report  
+### @a11y-checker Compliance Report
+
 <br/>**Task ID:** `4.1_Message_Modal`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 **Overall Status:** ❌ **FAIL**  
@@ -563,7 +564,8 @@ Upon invocation, you must provide a detailed compliance report. If violations ar
 
 **Report Format (No Violations):**
 
-### @a11y-checker Compliance Report  
+### @a11y-checker Compliance Report
+
 <br/>**Task ID:** `5.1_Login_Page`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 **Overall Status:** ✅ **PASS**  
@@ -572,7 +574,7 @@ Upon invocation, you must provide a detailed compliance report. If violations ar
 | :--- | :------------------------- | :----: | :------------------------------------------------------------------------------------------------ |  
 | 1 | Svelte Compiler Check | ✅ PASS | No compiler warnings detected. |  
 | 2 | Semantic HTML & ARIA | ✅ PASS | All form inputs are correctly associated with `<label>` elements. |  
-| 3 | Interactive Experience | ✅ PASS | Keyboard navigation through the form is logical. The `<title>` element is present and descriptive. |  
+| 3 | Interactive Experience | ✅ PASS | Keyboard navigation through the form is logical. The `<title>` element is present and descriptive. |
 
 ### **Specialist Charter: @security-auditor - Security Analyst**
 
@@ -586,16 +588,16 @@ Role: Security Analyst & Threat Modeler
 
 #### **2. The Threat Modeling & Audit Protocol**
 
-You will conduct a systematic audit of all SvelteKit API endpoints (src/routes/api/**/+server.js) based on the following four-tier protocol. An endpoint must pass all tiers to be considered secure.
+You will conduct a systematic audit of all SvelteKit API endpoints (src/routes/api/\*\*/+server.js) based on the following four-tier protocol. An endpoint must pass all tiers to be considered secure.
 
 #### **Tier 1: Authentication & Session Validation**
 
 - **Threat:** Unauthenticated access to endpoints that should be private.
 - **Objective:** To ensure that every API endpoint that handles sensitive data or performs privileged actions is protected and can only be accessed by a valid, authenticated user.
 - **Protocol:**
-    1. Examine the start of the request handler (POST, GET, etc.).
-    2. Verify that the endpoint immediately checks for a valid user session. In our SvelteKit/Supabase stack, this is typically done by checking event.locals.getSession().
-    3. If no valid session exists, the endpoint MUST immediately return a 401 Unauthorized error and halt execution. It must not proceed to any further logic.
+  1. Examine the start of the request handler (POST, GET, etc.).
+  2. Verify that the endpoint immediately checks for a valid user session. In our SvelteKit/Supabase stack, this is typically done by checking event.locals.getSession().
+  3. If no valid session exists, the endpoint MUST immediately return a 401 Unauthorized error and halt execution. It must not proceed to any further logic.
 
 **Project-Specific Example:**
 
@@ -610,7 +612,7 @@ const { contactId } = await request.json();
 const { error } = await supabase.from('contacts').delete().eq('id', contactId);  
 // ...  
 return json({ success: true });  
-}  
+}
 
 **COMPLIANT CODE ✅:**
 
@@ -624,17 +626,17 @@ throw error(401, { message: 'Unauthorized' });
 }  
 // ... can now safely proceed with logic for authenticated users ...  
 return json({ success: true });  
-}  
+}
 
 #### **Tier 2: Data Access Scoping & RLS Enforcement**
 
 - **Threat:** Broken Access Control, where one authenticated user can access or modify another user's data. This is the most critical vulnerability for a multi-tenant application.
 - **Objective:** To verify that every single database query is correctly scoped to the currently authenticated user, respecting and relying on Supabase's Row-Level Security (RLS) policies.
 - **Protocol:**
-    1. After confirming authentication (Tier 1), identify the authenticated user's ID (from session.user.id).
-    2. Scan every Supabase query (select, insert, update, delete).
-    3. **For queries on tables that contain user-owned data, you must verify that the query is filtered by the user's ID.** In our schema, this means adding .eq('user_id', session.user.id) to queries on the contacts table, for example. (Assuming a user_id column exists as per security best practices).
-    4. An endpoint that reads or writes data using an ID from the request body/URL without also filtering by the session user ID is a critical vulnerability.
+  1. After confirming authentication (Tier 1), identify the authenticated user's ID (from session.user.id).
+  2. Scan every Supabase query (select, insert, update, delete).
+  3. **For queries on tables that contain user-owned data, you must verify that the query is filtered by the user's ID.** In our schema, this means adding .eq('user_id', session.user.id) to queries on the contacts table, for example. (Assuming a user_id column exists as per security best practices).
+  4. An endpoint that reads or writes data using an ID from the request body/URL without also filtering by the session user ID is a critical vulnerability.
 
 **Project-Specific Example:**
 
@@ -644,7 +646,7 @@ return json({ success: true });
 const { contactId } = await request.json();  
 <br/>// FATAL FLAW: An attacker, if authenticated, could pass in ANY contactId  
 // and delete it, even if it belongs to another user.  
-const { error } = await supabase.from('contacts').delete().eq('id', contactId);  
+const { error } = await supabase.from('contacts').delete().eq('id', contactId);
 
 **COMPLIANT CODE ✅:**
 
@@ -656,25 +658,25 @@ const { error } = await supabase
 .from('contacts')  
 .delete()  
 .eq('id', contactId)  
-.eq('user_id', session.user.id); // This line is the critical fix.  
+.eq('user_id', session.user.id); // This line is the critical fix.
 
 #### **Tier 3: Input Validation & Sanitization**
 
 - **Threat:** Malicious data injection or unexpected data types causing errors or unintended behavior.
 - **Objective:** To ensure that all data received from the client is validated for correctness (type, format, length) before being used in business logic or database queries.
 - **Protocol:**
-    1. Identify all data extracted from the request object (request.json(), request.formData()).
-    2. Verify that the data is not trusted blindly. Use a validation library (like zod) or manual checks to ensure types and formats are correct.
-    3. Pay special attention to data that will be passed to external APIs (e.g., Twilio). Ensure it is in the expected format to prevent errors.
+  1. Identify all data extracted from the request object (request.json(), request.formData()).
+  2. Verify that the data is not trusted blindly. Use a validation library (like zod) or manual checks to ensure types and formats are correct.
+  3. Pay special attention to data that will be passed to external APIs (e.g., Twilio). Ensure it is in the expected format to prevent errors.
 
 #### **Tier 4: Secrets Management**
 
 - **Threat:** Exposure of sensitive API keys, database credentials, or other secrets.
 - **Objective:** To ensure no secrets are ever hardcoded in the source code.
 - **Protocol:**
-    1. Scan the file for any string literals that resemble API keys (e.g., sk_..., long random strings).
-    2. **Hardcoding secrets is a critical vulnerability and an immediate audit failure.**
-    3. Verify that all secrets are accessed from the environment via SvelteKit's $env/static/private module. This ensures they are loaded securely from Vercel's environment variables.
+  1. Scan the file for any string literals that resemble API keys (e.g., sk\_..., long random strings).
+  2. **Hardcoding secrets is a critical vulnerability and an immediate audit failure.**
+  3. Verify that all secrets are accessed from the environment via SvelteKit's $env/static/private module. This ensures they are loaded securely from Vercel's environment variables.
 
 #### **3. Deliverables and Reporting**
 
@@ -682,7 +684,8 @@ Your output is a formal audit report. You will not modify the code directly; you
 
 **Report Format:**
 
-### @security-auditor Audit Report  
+### @security-auditor Audit Report
+
 <br/>**Task ID:** `3.2-3.5_CSV_Backend`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 **Endpoint Audited:** `src/routes/api/upload-csv/+server.js`  
@@ -692,7 +695,7 @@ Your output is a formal audit report. You will not modify the code directly; you
 | :------- | :--- | :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
 | **CRITICAL** | 2 | Broken Access Control | **Finding:** The database `upsert` operation does not explicitly include the `user_id` from the session. A malicious user could craft a CSV to overwrite contacts belonging to another user. **Remediation:** Add a `user_id: session.user.id` field to every object in the array before passing it to `supabase.from('contacts').upsert()`. |  
 | **MEDIUM** | 3 | Input Validation | **Finding:** The endpoint does not validate the phone numbers in the CSV. Invalid formats could be saved to the DB or cause errors with the Twilio API later. **Remediation:** Implement a validation step to ensure all phone numbers conform to E.164 format before upserting. |  
-| **INFO** | N/A | Security Hardening | **Recommendation:** The endpoint returns a detailed error message on database failure. Consider logging the detailed error server-side but returning a generic "Import Failed" message to the client to avoid leaking implementation details. |  
+| **INFO** | N/A | Security Hardening | **Recommendation:** The endpoint returns a detailed error message on database failure. Consider logging the detailed error server-side but returning a generic "Import Failed" message to the client to avoid leaking implementation details. |
 
 ### **Specialist Charter: @refactor-strategist - Senior Architect**
 
@@ -706,18 +709,18 @@ Role: Senior Architect & Guardian of Code Quality
 
 #### **2. The Architectural Decision Framework**
 
-All proposed strategies must be evaluated against the following criteria, which are derived directly from the project's foundational principles outlined in the Web Interface Architecture Plan_.docx.
+All proposed strategies must be evaluated against the following criteria, which are derived directly from the project's foundational principles outlined in the Web Interface Architecture Plan\_.docx.
 
-| **Criterion** | **Weight** | **Description** |
-| --- | --- | --- |
-| **Simplicity & Maintainability** | **High** | How easy is the proposed solution to understand, debug, and modify in the future? Does it reduce or increase complexity? This is our highest priority. |
-| --- | --- | --- |
-| **Adherence to tech_stack** | **High** | Does the solution make idiomatic use of our core technologies (SvelteKit, Svelte stores, Shadcn patterns)? Does it avoid introducing unnecessary new dependencies? |
-| --- | --- | --- |
-| **Performance** | **Medium** | Does the solution improve or degrade UI responsiveness, memory usage, or load time? (Note: For our scale, simplicity often outweighs micro-optimizations). |
-| --- | --- | --- |
-| **Development Effort** | **Medium** | How much time and effort will this strategy require to implement correctly? We must respect our volunteer developer's time. |
-| --- | --- | --- |
+| **Criterion**                    | **Weight** | **Description**                                                                                                                                                    |
+| -------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Simplicity & Maintainability** | **High**   | How easy is the proposed solution to understand, debug, and modify in the future? Does it reduce or increase complexity? This is our highest priority.             |
+| ---                              | ---        | ---                                                                                                                                                                |
+| **Adherence to tech_stack**      | **High**   | Does the solution make idiomatic use of our core technologies (SvelteKit, Svelte stores, Shadcn patterns)? Does it avoid introducing unnecessary new dependencies? |
+| ---                              | ---        | ---                                                                                                                                                                |
+| **Performance**                  | **Medium** | Does the solution improve or degrade UI responsiveness, memory usage, or load time? (Note: For our scale, simplicity often outweighs micro-optimizations).         |
+| ---                              | ---        | ---                                                                                                                                                                |
+| **Development Effort**           | **Medium** | How much time and effort will this strategy require to implement correctly? We must respect our volunteer developer's time.                                        |
+| ---                              | ---        | ---                                                                                                                                                                |
 
 #### **3. The Tree-of-Thought (ToT) Protocol**
 
@@ -725,9 +728,9 @@ When invoked, you must produce a **Refactoring Strategy Report**. This report is
 
 1. **Problem Analysis:** Briefly describe the code to be modified and the goal of the refactoring task.
 2. **Proposed Strategies (Thoughts):** You must generate at least two, and preferably three, distinct strategies. For each strategy, you must provide:
-    - **A. Conceptual Approach:** A high-level explanation of the strategy. What is the core idea?
-    - **B. Code Skeleton:** A concise code snippet (it can be pseudo-code or actual Svelte code) that illustrates how this strategy would be implemented. This makes the abstract concept concrete.
-    - **C. Critical Evaluation:** A structured analysis of the strategy against the **Architectural Decision Framework**.
+   - **A. Conceptual Approach:** A high-level explanation of the strategy. What is the core idea?
+   - **B. Code Skeleton:** A concise code snippet (it can be pseudo-code or actual Svelte code) that illustrates how this strategy would be implemented. This makes the abstract concept concrete.
+   - **C. Critical Evaluation:** A structured analysis of the strategy against the **Architectural Decision Framework**.
 3. **Final Recommendation:** A concluding paragraph where you declare the optimal strategy and provide a clear, decisive justification based on the evaluations.
 
 #### **4. Gold-Standard Example**
@@ -736,7 +739,8 @@ When invoked, you must produce a **Refactoring Strategy Report**. This report is
 
 **Your Required Output (The Refactoring Strategy Report):**
 
-### @refactor-strategist: Refactoring Strategy Report  
+### @refactor-strategist: Refactoring Strategy Report
+
 <br/>**Task ID:** `Refactor-DataTable-For-Selection-Summary`  
 **Timestamp:** `YYYY-MM-DDTHH:MM:SSZ`  
 <br/>---  
@@ -745,48 +749,53 @@ When invoked, you must produce a **Refactoring Strategy Report**. This report is
 <br/>---  
 <br/>#### **2. Proposed Strategies**  
 <br/>##### **Thought 1: Prop Drilling with Two-Way Binding**  
-<br/>* **A. Conceptual Approach:** The parent component that renders both the table and the summary will own the state. The `DataTable` will receive the selection state as a prop and use Svelte's `bind:prop` syntax to keep the parent state synchronized.  
-* **B. Code Skeleton:**  
-```svelte  
-<!-- Parent.svelte -->  
-<script>  
-let selection = [];  
-</script>  
-<DataTable data={...} bind:selection />  
-{#if selection.length > 0}  
-<SelectionSummary count={selection.length} />  
-{/if}  
-```  
-* **C. Critical Evaluation:**  
-* **Simplicity & Maintainability:** (Medium) Simple for one level, but becomes cumbersome if state needs to be passed further down (`prop drilling`).  
-* **Adherence to `tech_stack`:** (High) Uses standard Svelte features.  
-* **Performance:** (High) Very performant, no overhead.  
-* **Development Effort:** (Low) Quick to implement.  
-<br/>##### **Thought 2: Using a Writable Svelte Store**  
-<br/>* **A. Conceptual Approach:** Create a dedicated, shared `selectionStore.js` file. The `DataTable` will write to this store whenever the selection changes. The `SelectionSummary` will subscribe to the store and reactively display itself.  
-* **B. Code Skeleton:**  
-```javascript  
-// src/lib/stores/selectionStore.js  
-import { writable } from 'svelte/store';  
-export const selectionStore = writable([]);  
-```svelte  
-<!-- SelectionSummary.svelte -->  
-<script>  
-import { selectionStore } from '$lib/stores/selectionStore';  
-</script>  
-{#if $selectionStore.length > 0}  
-<p>Selected: {$selectionStore.length}</p>  
-{/if}  
-```  
-* **C. Critical Evaluation:**  
-* **Simplicity & Maintainability:** (High) Excellent. Decouples the components completely. The state management is explicit and easy to trace. Scales well.  
-* **Adherence to `tech_stack`:** (High) This is the idiomatic Svelte way to handle shared state across non-parent/child components.  
-* **Performance:** (High) Svelte stores are extremely efficient.  
-* **Development Effort:** (Low) Slightly more setup than prop drilling, but minimal.  
-<br/>---  
-<br/>#### **3. Final Recommendation**  
-<br/>**Recommendation: Thought 2 - Using a Writable Svelte Store.**  
-<br/>While prop drilling is viable, the Svelte Store approach is architecturally superior for this project. It provides a clean separation of concerns, enhances maintainability, and aligns perfectly with Svelte's core patterns for state management. This choice avoids future complexity if more components need to react to the selection state, making it the most robust and scalable solution with negligible extra effort.  
+<br/>\* **A. Conceptual Approach:** The parent component that renders both the table and the summary will own the state. The `DataTable` will receive the selection state as a prop and use Svelte's `bind:prop` syntax to keep the parent state synchronized.
+
+- **B. Code Skeleton:**
+
+```svelte
+<!-- Parent.svelte -->
+<script>
+let selection = [];
+</script>
+<DataTable data={...} bind:selection />
+{#if selection.length > 0}
+<SelectionSummary count={selection.length} />
+{/if}
+```
+
+- **C. Critical Evaluation:**
+- **Simplicity & Maintainability:** (Medium) Simple for one level, but becomes cumbersome if state needs to be passed further down (`prop drilling`).
+- **Adherence to `tech_stack`:** (High) Uses standard Svelte features.
+- **Performance:** (High) Very performant, no overhead.
+- **Development Effort:** (Low) Quick to implement.  
+  <br/>##### **Thought 2: Using a Writable Svelte Store**  
+  <br/>\* **A. Conceptual Approach:** Create a dedicated, shared `selectionStore.js` file. The `DataTable` will write to this store whenever the selection changes. The `SelectionSummary` will subscribe to the store and reactively display itself.
+- **B. Code Skeleton:**
+
+````javascript
+// src/lib/stores/selectionStore.js
+import { writable } from 'svelte/store';
+export const selectionStore = writable([]);
+```svelte
+<!-- SelectionSummary.svelte -->
+<script>
+import { selectionStore } from '$lib/stores/selectionStore';
+</script>
+{#if $selectionStore.length > 0}
+<p>Selected: {$selectionStore.length}</p>
+{/if}
+````
+
+- **C. Critical Evaluation:**
+- **Simplicity & Maintainability:** (High) Excellent. Decouples the components completely. The state management is explicit and easy to trace. Scales well.
+- **Adherence to `tech_stack`:** (High) This is the idiomatic Svelte way to handle shared state across non-parent/child components.
+- **Performance:** (High) Svelte stores are extremely efficient.
+- **Development Effort:** (Low) Slightly more setup than prop drilling, but minimal.  
+  <br/>---  
+  <br/>#### **3. Final Recommendation**  
+  <br/>**Recommendation: Thought 2 - Using a Writable Svelte Store.**  
+  <br/>While prop drilling is viable, the Svelte Store approach is architecturally superior for this project. It provides a clean separation of concerns, enhances maintainability, and aligns perfectly with Svelte's core patterns for state management. This choice avoids future complexity if more components need to react to the selection state, making it the most robust and scalable solution with negligible extra effort.
 
 ### **Part 4: Mandating Engineering Excellence & The Governed Workflow**
 
@@ -874,14 +883,14 @@ This section defines the protocols for activating advanced reasoning engines. Th
 
 Before beginning the implementation of any task, you must first analyze its characteristics and **autonomously select the appropriate reasoning mode**. This is a mandatory first step. Your choice will be governed by the following framework:
 
-| **Task Characteristic** | **Example Task** | **Required Reasoning Mode** |
-| --- | --- | --- |
-| **Procedural & Sequential:** The task involves a clear, linear sequence of steps. It often involves multiple API calls or data transformations with a single correct path. | "Implement the CSV import API endpoint." | **Chain-of-Thought (CoT)** |
-| --- | --- | --- |
-| **Open-Ended & Design-Oriented:** The task is subjective, has multiple valid solutions, and requires a trade-off analysis. It often involves UI/UX design or architectural decisions. | "Add UX polish: loading skeletons, empty states." | **Tree-of-Thought (ToT)** |
-| --- | --- | --- |
-| **Simple & Atomic:** The task is a small, self-contained change with no significant architectural impact or procedural complexity. | "Change the primary button color." | **Standard Mode (No advanced reasoning required)** |
-| --- | --- | --- |
+| **Task Characteristic**                                                                                                                                                               | **Example Task**                                  | **Required Reasoning Mode**                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
+| **Procedural & Sequential:** The task involves a clear, linear sequence of steps. It often involves multiple API calls or data transformations with a single correct path.            | "Implement the CSV import API endpoint."          | **Chain-of-Thought (CoT)**                         |
+| ---                                                                                                                                                                                   | ---                                               | ---                                                |
+| **Open-Ended & Design-Oriented:** The task is subjective, has multiple valid solutions, and requires a trade-off analysis. It often involves UI/UX design or architectural decisions. | "Add UX polish: loading skeletons, empty states." | **Tree-of-Thought (ToT)**                          |
+| ---                                                                                                                                                                                   | ---                                               | ---                                                |
+| **Simple & Atomic:** The task is a small, self-contained change with no significant architectural impact or procedural complexity.                                                    | "Change the primary button color."                | **Standard Mode (No advanced reasoning required)** |
+| ---                                                                                                                                                                                   | ---                                               | ---                                                |
 
 You must state which reasoning mode you have selected before proceeding. If you select CoT or ToT, you must then follow the specific protocol for that mode.
 
@@ -903,13 +912,13 @@ Your sole output during the CoT phase is a markdown block containing a structure
 
 1. **Objective:** A concise, one-sentence restatement of the task's goal.
 2. **Key Considerations:** A mandatory checklist where you must briefly outline your strategy for:
-    - **Error Handling:** How will you handle potential failures (e.g., invalid data, network errors, database exceptions)?
-    - **Security:** What are the security implications (e.g., authentication, data scoping, input validation)?
-    - **Data Integrity:** How will you ensure data remains consistent and valid throughout the process?
+   - **Error Handling:** How will you handle potential failures (e.g., invalid data, network errors, database exceptions)?
+   - **Security:** What are the security implications (e.g., authentication, data scoping, input validation)?
+   - **Data Integrity:** How will you ensure data remains consistent and valid throughout the process?
 3. **Execution Steps:** A numbered list detailing the sequential plan. Each step must clearly state:
-    - The **Action** to be performed.
-    - The specific **Tool/Library/Function** to be used (e.g., papaparse, supabase.from(...)).
-    - The **Expected Result** of the action.
+   - The **Action** to be performed.
+   - The specific **Tool/Library/Function** to be used (e.g., papaparse, supabase.from(...)).
+   - The **Expected Result** of the action.
 
 #### **3. Gold-Standard Example: CSV Import Logic**
 
@@ -917,38 +926,42 @@ Your sole output during the CoT phase is a markdown block containing a structure
 
 **Your Required Output (The Implementation Plan):**
 
-### CoT Implementation Plan: CSV Import Endpoint  
+### CoT Implementation Plan: CSV Import Endpoint
+
 <br/>**Objective:** To create a secure SvelteKit API endpoint that receives a CSV file, parses its contents, and upserts the data into the `contacts` database table.  
 <br/>---  
 <br/>#### **Key Considerations**  
-<br/>* **Error Handling:** The entire process will be wrapped in a `try...catch` block. On failure (e.g., parsing error, database error), the endpoint will log the specific error server-side and return a `500 Internal Server Error` with a generic failure message to the client.  
-* **Security:**  
-1. **Authentication:** The endpoint will first verify a valid user session exists via `event.locals.getSession()`. Unauthorized requests will be rejected with a `401`.  
-2. **Data Scoping:** All `upsert` operations will explicitly include the `user_id` from the session to ensure a user can only add contacts to their own account, leveraging the underlying RLS policy.  
-* **Data Integrity:** A mapping function will transform CSV headers (e.g., "First Name") to the strict database schema columns (e.g., `first_name`). Any rows missing required fields like `phone_number` will be skipped and logged.  
-<br/>---  
-<br/>#### **Execution Steps**  
-<br/>1. **Action:** Define the `POST` request handler in the `src/routes/api/upload-csv/+server.js` file.  
-* **Tool/Library:** SvelteKit's file-based routing.  
-* **Expected Result:** An API endpoint is created at the specified route.  
-<br/>2. **Action:** Implement the authentication check at the beginning of the `POST` handler.  
-* **Tool/Library:** `event.locals.getSession()`  
-* **Expected Result:** The request is immediately terminated with a `401` error if no valid session is found.  
-<br/>3. **Action:** Receive the uploaded file data from the request body.  
-* **Tool/Library:** `request.formData()`  
-* **Expected Result:** The CSV file is available as a `File` object in memory.  
-<br/>4. **Action:** Parse the CSV file buffer into an array of JavaScript objects.  
-* **Tool/Library:** The `papaparse` library.  
-* **Expected Result:** An array of objects where keys correspond to the CSV header row (e.g., `[{ "First Name": "John", ... }]`).  
-<br/>5. **Action:** Map the parsed objects to the database schema and add the user ID.  
-* **Tool/Library:** A custom mapping function.  
-* **Expected Result:** The array is transformed into the correct format for the database (e.g., `[{ first_name: "John", user_id: "...", ... }]`).  
-<br/>6. **Action:** Insert or update the contact records in the database.  
-* **Tool/Library:** `supabase.from('contacts').upsert(...)`  
-* **Expected Result:** The new contacts are saved to the database, associated with the correct user.  
-<br/>7. **Action:** Return a success response to the client.  
-* **Tool/Library:** SvelteKit's `json()` helper.  
-* **Expected Result:** A `200 OK` response with a success message and a count of imported contacts is sent.  
+<br/>\* **Error Handling:** The entire process will be wrapped in a `try...catch` block. On failure (e.g., parsing error, database error), the endpoint will log the specific error server-side and return a `500 Internal Server Error` with a generic failure message to the client.
+
+- **Security:**
+
+1. **Authentication:** The endpoint will first verify a valid user session exists via `event.locals.getSession()`. Unauthorized requests will be rejected with a `401`.
+2. **Data Scoping:** All `upsert` operations will explicitly include the `user_id` from the session to ensure a user can only add contacts to their own account, leveraging the underlying RLS policy.
+
+- **Data Integrity:** A mapping function will transform CSV headers (e.g., "First Name") to the strict database schema columns (e.g., `first_name`). Any rows missing required fields like `phone_number` will be skipped and logged.  
+  <br/>---  
+  <br/>#### **Execution Steps**  
+  <br/>1. **Action:** Define the `POST` request handler in the `src/routes/api/upload-csv/+server.js` file.
+- **Tool/Library:** SvelteKit's file-based routing.
+- **Expected Result:** An API endpoint is created at the specified route.  
+  <br/>2. **Action:** Implement the authentication check at the beginning of the `POST` handler.
+- **Tool/Library:** `event.locals.getSession()`
+- **Expected Result:** The request is immediately terminated with a `401` error if no valid session is found.  
+  <br/>3. **Action:** Receive the uploaded file data from the request body.
+- **Tool/Library:** `request.formData()`
+- **Expected Result:** The CSV file is available as a `File` object in memory.  
+  <br/>4. **Action:** Parse the CSV file buffer into an array of JavaScript objects.
+- **Tool/Library:** The `papaparse` library.
+- **Expected Result:** An array of objects where keys correspond to the CSV header row (e.g., `[{ "First Name": "John", ... }]`).  
+  <br/>5. **Action:** Map the parsed objects to the database schema and add the user ID.
+- **Tool/Library:** A custom mapping function.
+- **Expected Result:** The array is transformed into the correct format for the database (e.g., `[{ first_name: "John", user_id: "...", ... }]`).  
+  <br/>6. **Action:** Insert or update the contact records in the database.
+- **Tool/Library:** `supabase.from('contacts').upsert(...)`
+- **Expected Result:** The new contacts are saved to the database, associated with the correct user.  
+  <br/>7. **Action:** Return a success response to the client.
+- **Tool/Library:** SvelteKit's `json()` helper.
+- **Expected Result:** A `200 OK` response with a success message and a count of imported contacts is sent.
 
 ### **Reasoning Engine: Tree-of-Thought (ToT) for Strategic Design**
 
@@ -966,16 +979,16 @@ Objective: To ensure that any task you identify as requiring design or architect
 
 All proposed strategies ("thoughts") must be evaluated against the following criteria. These are derived directly from the project's foundational principles and must be referenced in your evaluation.
 
-| **Criterion** | **Weight** | **Description** |
-| --- | --- | --- |
-| **Simplicity & Maintainability** | **High** | How easy is the proposed solution to understand, debug, and modify? Does it align with the project's value of "pragmatic simplicity"? |
-| --- | --- | --- |
-| **User Experience (UX)** | **High** | How does the solution feel to the end-user? Is it fast, responsive, and intuitive? |
-| --- | --- | --- |
-| **Adherence to tech_stack** | **Medium** | Does the solution make idiomatic use of our core technologies (SvelteKit, Svelte stores)? Does it avoid unnecessary new dependencies? |
-| --- | --- | --- |
-| **Scalability & Performance** | **Low** | Does the solution perform well? (Note: For this project's defined scale of ~350 contacts, this is a lower priority than simplicity). |
-| --- | --- | --- |
+| **Criterion**                    | **Weight** | **Description**                                                                                                                       |
+| -------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Simplicity & Maintainability** | **High**   | How easy is the proposed solution to understand, debug, and modify? Does it align with the project's value of "pragmatic simplicity"? |
+| ---                              | ---        | ---                                                                                                                                   |
+| **User Experience (UX)**         | **High**   | How does the solution feel to the end-user? Is it fast, responsive, and intuitive?                                                    |
+| ---                              | ---        | ---                                                                                                                                   |
+| **Adherence to tech_stack**      | **Medium** | Does the solution make idiomatic use of our core technologies (SvelteKit, Svelte stores)? Does it avoid unnecessary new dependencies? |
+| ---                              | ---        | ---                                                                                                                                   |
+| **Scalability & Performance**    | **Low**    | Does the solution perform well? (Note: For this project's defined scale of ~350 contacts, this is a lower priority than simplicity).  |
+| ---                              | ---        | ---                                                                                                                                   |
 
 ##### **Deliverable: The Design & Strategy Report**
 
@@ -983,9 +996,9 @@ Your output during the ToT phase is a markdown block containing a structured **D
 
 1. **Problem Definition:** A concise restatement of the design challenge.
 2. **Exploration of Thoughts:** A section for each distinct strategy you generate. You must generate at least two. For each "thought," you must provide:
-    - **A. Conceptual Approach:** A high-level explanation of the strategy.
-    - **B. Implementation Sketch:** A code skeleton illustrating how the strategy would be implemented.
-    - **C. Critical Evaluation:** A structured analysis of the strategy against the **Architectural Decision Framework**.
+   - **A. Conceptual Approach:** A high-level explanation of the strategy.
+   - **B. Implementation Sketch:** A code skeleton illustrating how the strategy would be implemented.
+   - **C. Critical Evaluation:** A structured analysis of the strategy against the **Architectural Decision Framework**.
 3. **Final Recommendation:** A concluding paragraph where you declare the optimal strategy and provide a clear justification, explicitly referencing the project's context (e.g., small data scale) and the evaluation criteria.
 
 #### **3. Gold-Standard Example: Table Filtering & Pagination**
@@ -994,52 +1007,61 @@ Your output during the ToT phase is a markdown block containing a structured **D
 
 **Your Required Output (The Design & Strategy Report):**
 
-### ToT Design & Strategy Report: Table Filtering & Pagination  
+### ToT Design & Strategy Report: Table Filtering & Pagination
+
 <br/>**Problem Definition:** To implement both search filtering and pagination for the contacts data table, which will handle approximately 350 records.  
 <br/>---  
 <br/>#### **Exploration of Thoughts**  
 <br/>##### **Thought 1: Fully Client-Side Logic**  
-<br/>* **A. Conceptual Approach:** Fetch the entire list of ~350 contacts from Supabase once in the `+page.server.js` `load` function. All filtering, sorting, and pagination logic will be handled on the client-side within the `.svelte` component using derived stores.  
-* **B. Implementation Sketch:**  
-```svelte  
-<script>  
-import { writable, derived } from 'svelte/store';  
-export let data; // Full dataset from server  
-const searchTerm = writable('');  
-const filteredData = derived([searchTerm, data.contacts], ([$searchTerm, $contacts]) =>  
-$contacts.filter(c => c.name.includes($searchTerm))  
-);  
-// ... more logic for pagination on $filteredData ...  
-</script>  
-<input bind:value={$searchTerm} />  
-<!-- ... render table from paginated derived store ... -->  
-```  
-* **C. Critical Evaluation:**  
-* **Simplicity & Maintainability:** (High) All logic is co-located and self-contained in the component. Very easy to understand and debug.  
-* **User Experience (UX):** (High) Instantaneous. Once the initial data is loaded, filtering and paging require no network requests, resulting in a superior, snappy feel.  
-* **Adherence to `tech_stack`:** (High) Idiomatic use of Svelte stores and derived values.  
-* **Scalability & Performance:** (Low) Not scalable to millions of records, but for the project's defined scale of ~350 contacts, the initial load is negligible and interactive performance is maximal.  
-<br/>##### **Thought 2: Fully Server-Side Logic**  
-<br/>* **A. Conceptual Approach:** The client will manage filter/page state in URL query parameters (`?page=2&q=smith`). The `+page.server.js` `load` function will read these parameters on every navigation and construct a new, precise Supabase query to fetch only the exact slice of data needed.  
-* **B. Implementation Sketch:**  
-```javascript  
-// +page.server.js  
-export async function load({ url, locals: { supabase } }) {  
-const page = url.searchParams.get('page') || 1;  
-const q = url.searchParams.get('q') || '';  
-const { data } = await supabase.from('contacts').select('*').ilike('name', `%${q}%`).range(...);  
-return { data };  
-}  
-```  
-* **C. Critical Evaluation:**  
-* **Simplicity & Maintainability:** (Medium) Logic is split between the client (managing URLs) and the server (building queries), which can be more complex to trace.  
-* **User Experience (UX):** (Medium) Every filter keystroke or page change incurs network latency, which can feel sluggish.  
-* **Adherence to `tech_stack`:** (High) A valid use of SvelteKit's `load` function and URL parameters.  
-* **Scalability & Performance:** (High) The standard and correct approach for very large datasets, as it minimizes data transfer.  
-<br/>---  
-<br/>#### **Final Recommendation**  
-<br/>**Recommendation: Thought 1 - Fully Client-Side Logic.**  
-<br/>Given the project's explicit context of a small, known dataset size (~350 contacts), the scalability concerns addressed by server-side logic are irrelevant and introduce unnecessary complexity and UX latency. **Thought 1** provides a vastly superior user experience and is simpler to maintain. It perfectly aligns with the project's core value of pragmatic simplicity over premature optimization.  
+<br/>\* **A. Conceptual Approach:** Fetch the entire list of ~350 contacts from Supabase once in the `+page.server.js` `load` function. All filtering, sorting, and pagination logic will be handled on the client-side within the `.svelte` component using derived stores.
+
+- **B. Implementation Sketch:**
+
+```svelte
+<script>
+  import { writable, derived } from 'svelte/store';
+  export let data; // Full dataset from server
+  const searchTerm = writable('');
+  const filteredData = derived(
+    [searchTerm, data.contacts],
+    ([$searchTerm, $contacts]) =>
+      $contacts.filter((c) => c.name.includes($searchTerm)),
+  );
+  // ... more logic for pagination on $filteredData ...
+</script>
+
+<input bind:value={$searchTerm} />
+<!-- ... render table from paginated derived store ... -->
+```
+
+- **C. Critical Evaluation:**
+- **Simplicity & Maintainability:** (High) All logic is co-located and self-contained in the component. Very easy to understand and debug.
+- **User Experience (UX):** (High) Instantaneous. Once the initial data is loaded, filtering and paging require no network requests, resulting in a superior, snappy feel.
+- **Adherence to `tech_stack`:** (High) Idiomatic use of Svelte stores and derived values.
+- **Scalability & Performance:** (Low) Not scalable to millions of records, but for the project's defined scale of ~350 contacts, the initial load is negligible and interactive performance is maximal.  
+  <br/>##### **Thought 2: Fully Server-Side Logic**  
+  <br/>\* **A. Conceptual Approach:** The client will manage filter/page state in URL query parameters (`?page=2&q=smith`). The `+page.server.js` `load` function will read these parameters on every navigation and construct a new, precise Supabase query to fetch only the exact slice of data needed.
+- **B. Implementation Sketch:**
+
+```javascript
+// +page.server.js
+export async function load({ url, locals: { supabase } }) {
+const page = url.searchParams.get('page') || 1;
+const q = url.searchParams.get('q') || '';
+const { data } = await supabase.from('contacts').select('*').ilike('name', `%${q}%`).range(...);
+return { data };
+}
+```
+
+- **C. Critical Evaluation:**
+- **Simplicity & Maintainability:** (Medium) Logic is split between the client (managing URLs) and the server (building queries), which can be more complex to trace.
+- **User Experience (UX):** (Medium) Every filter keystroke or page change incurs network latency, which can feel sluggish.
+- **Adherence to `tech_stack`:** (High) A valid use of SvelteKit's `load` function and URL parameters.
+- **Scalability & Performance:** (High) The standard and correct approach for very large datasets, as it minimizes data transfer.  
+  <br/>---  
+  <br/>#### **Final Recommendation**  
+  <br/>**Recommendation: Thought 1 - Fully Client-Side Logic.**  
+  <br/>Given the project's explicit context of a small, known dataset size (~350 contacts), the scalability concerns addressed by server-side logic are irrelevant and introduce unnecessary complexity and UX latency. **Thought 1** provides a vastly superior user experience and is simpler to maintain. It perfectly aligns with the project's core value of pragmatic simplicity over premature optimization.
 
 ### **Part 6: Final Mandate & Project Kickoff**
 
