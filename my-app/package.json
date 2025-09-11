@@ -19,7 +19,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.4",
-    "@tanstack/svelte-table": "^8.21.3",
+    "tanstack-table-8-svelte-5": "^0.1.2",
     "lucide-svelte": "^0.542.0"
   }
 }

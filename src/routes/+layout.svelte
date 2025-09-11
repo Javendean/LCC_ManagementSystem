@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>LCC Management System</title>
+</svelte:head>
+
 <script>
   import { onMount } from 'svelte';
   import { supabase } from '$lib/supabaseClient';
