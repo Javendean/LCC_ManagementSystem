@@ -1,6 +1,6 @@
 import { createRender } from '@tanstack/svelte-table';
 
-/** @type {import('@tanstack/svelte-table').ColumnDef<import('$lib/types').Contact>[]} */
+/** @type {import('tanstack-table-8-svelte-5').ColumnDef<import('$lib/types').Contact>[]} */
 export const columns = [
   {
     accessorKey: 'first_name',
