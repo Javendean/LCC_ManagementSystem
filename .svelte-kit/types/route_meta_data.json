@@ -1,26 +1,15 @@
 {
-	"/": [
-		"src/routes/+layout.server.js",
-		"src/routes/+layout.server.js"
-	],
-	"/api/send-message": [
-		"src/routes/api/send-message/+server.js"
-	],
-	"/api/upload-csv": [
-		"src/routes/api/upload-csv/+server.js"
-	],
-	"/auth/forgot-password": [
-		"src/routes/auth/forgot-password/+page.server.js",
-		"src/routes/+layout.server.js"
-	],
-	"/auth/update-password": [
-		"src/routes/+layout.server.js"
-	],
-	"/contacts": [
-		"src/routes/contacts/+page.server.js",
-		"src/routes/+layout.server.js"
-	],
-	"/login": [
-		"src/routes/+layout.server.js"
-	]
+  "/": ["src/routes/+layout.server.js", "src/routes/+layout.server.js"],
+  "/api/send-message": ["src/routes/api/send-message/+server.js"],
+  "/api/upload-csv": ["src/routes/api/upload-csv/+server.js"],
+  "/auth/forgot-password": [
+    "src/routes/auth/forgot-password/+page.server.js",
+    "src/routes/+layout.server.js"
+  ],
+  "/auth/update-password": ["src/routes/+layout.server.js"],
+  "/contacts": [
+    "src/routes/contacts/+page.server.js",
+    "src/routes/+layout.server.js"
+  ],
+  "/login": ["src/routes/+layout.server.js"]
 }
