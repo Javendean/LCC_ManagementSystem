@@ -19,14 +19,29 @@ export const handle = async ({ event, resolve }) => {
     }
   )
 
-  event.locals.getSession = async () => {
+  event.locals.safeGetSession = async () => {
     const {
       data: { session },
     } = await event.locals.supabase.auth.getSession()
-    return session
+    if (!session) {
+      return { session: null, user: null }
+    }
+
+    const {
+      data: { user },
+      error,
+    } = await event.locals.supabase.auth.getUser()
+    if (error) {
+      // JWT validation has failed
+      return { session: null, user: null }
+    }
+
+    return { session, user }
   }
 
-  const session = await event.locals.getSession()
+  const { session, user } = await event.locals.safeGetSession();
+  event.locals.session = session;
+  event.locals.user = user;
 
   if (!session && event.url.pathname !== '/login') {
     throw redirect(303, '/login');

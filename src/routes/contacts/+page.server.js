@@ -1,8 +1,7 @@
-import { supabase } from '$lib/supabaseClient.js';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load() {
+export async function load({ locals: { supabase } }) {
     try {
         const { data: contacts, error: dbError } = await supabase.from('contacts').select('*');
 

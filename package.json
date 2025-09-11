@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "node -r dotenv/config ./node_modules/vite/bin/vite.js dev",
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
@@ -18,6 +18,7 @@
     "@sveltejs/adapter-auto": "^3.2.2",
     "@sveltejs/kit": "^2.5.18",
     "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "dotenv": "^17.2.2",
     "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.42.0",

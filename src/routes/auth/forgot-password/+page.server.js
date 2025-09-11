@@ -1,8 +1,6 @@
-import { supabase } from '$lib/supabaseClient.js';
-
 /** @type {import('./$types').Actions} */
 export const actions = {
-  default: async ({ request, url }) => {
+  default: async ({ request, url, locals: { supabase } }) => {
     const formData = await request.formData();
     const email = formData.get('email');
 
