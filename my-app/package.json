@@ -21,6 +21,7 @@
     "@supabase/supabase-js": "^2.57.4",
     "tanstack-table-8-svelte-5": "^0.1.2",
     "lucide-svelte": "^0.542.0",
-    "twilio": "^5.2.2"
+    "twilio": "^5.2.2",
+    "papaparse": "^5.4.1"
   }
 }
