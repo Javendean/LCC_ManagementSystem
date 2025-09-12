@@ -1,4 +1,9 @@
 <script>
+  /**
+   * @component DataTable
+   * @description A Svelte component that displays a data table of contacts using TanStack Table.
+   * @props {Array<import('$lib/types').Contact>} contacts - The list of contacts to display.
+   */
   import {
     createSvelteTable,
     flexRender,
@@ -18,6 +23,10 @@
   let columnVisibility = {};
   let rowSelection = {};
 
+  /**
+   * The TanStack Table instance.
+   * @type {import('tanstack-table-8-svelte-5').SvelteTable}
+   */
   const table = createSvelteTable({
     get data() {
       return contacts;

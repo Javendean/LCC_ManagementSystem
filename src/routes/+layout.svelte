@@ -1,4 +1,10 @@
 <script>
+  /**
+   * @component Layout
+   * @description The root layout component for the application. It handles Supabase auth state changes.
+   * @props {object} data - The data object from the server.
+   * @props {import('@supabase/supabase-js').Session | null} data.session - The user's session.
+   */
   import { onMount } from 'svelte';
   import { supabase } from '$lib/supabaseClient';
   import { invalidateAll, goto } from '$app/navigation';
@@ -7,6 +13,11 @@
 
   $: ({ session } = data);
 
+  /**
+   * onMount lifecycle function.
+   * Sets up a listener for Supabase authentication state changes.
+   * This listener handles session updates and password recovery redirects.
+   */
   onMount(() => {
     console.log('Layout mounted, setting up onAuthStateChange listener.');
 

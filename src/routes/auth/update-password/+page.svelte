@@ -1,5 +1,10 @@
 <!-- src/routes/auth/update-password/+page.svelte -->
 <script>
+  /**
+   * @component UpdatePassword
+   * @description The Svelte component for the update password page.
+   * It provides a form for users to update their password after a password reset request.
+   */
   import { supabase } from '$lib/supabaseClient';
   import { goto } from '$app/navigation';
 
@@ -9,6 +14,11 @@
   let successMessage = '';
   let loading = false;
 
+  /**
+   * Handles the password update process.
+   * It validates the new password, sends the update request to Supabase,
+   * and handles success and error messages.
+   */
   async function handleUpdatePassword() {
     if (password !== confirmPassword) {
       errorMessage = 'Passwords do not match.';

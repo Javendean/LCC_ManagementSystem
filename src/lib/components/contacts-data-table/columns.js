@@ -1,4 +1,9 @@
-/** @type {import('tanstack-table-8-svelte-5').ColumnDef<import('$lib/types').Contact>[]} */
+/**
+ * An array of column definitions for the contacts data table.
+ * Each object in the array represents a column and its properties.
+ *
+ * @type {import('tanstack-table-8-svelte-5').ColumnDef<import('$lib/types').Contact>[]}
+ */
 export const columns = [
   {
     accessorKey: 'first_name',

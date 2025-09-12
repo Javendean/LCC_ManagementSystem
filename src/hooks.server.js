@@ -4,7 +4,19 @@ import {
   PUBLIC_SUPABASE_URL,
   PUBLIC_SUPABASE_ANON_KEY,
 } from '$env/static/public';
-
+/**
+ * @typedef {import('@supabase/supabase-js').Session} Session
+ * @typedef {import('@supabase/supabase-js').User} User
+ */
+/**
+ * SvelteKit server hook that runs for every request.
+ * It initializes the Supabase client, handles authentication, and protects routes.
+ *
+ * @param {object} params
+ * @param {import('@sveltejs/kit').RequestEvent} params.event - The SvelteKit event object.
+ * @param {function} params.resolve - The SvelteKit resolve function.
+ * @returns {Promise<Response>} The response object.
+ */
 export const handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
     PUBLIC_SUPABASE_URL,
@@ -21,7 +33,12 @@ export const handle = async ({ event, resolve }) => {
       },
     },
   );
-
+  /**
+   * A convenience helper so we can just call await getSession() instead of
+   * const { data: { session } } = await supabase.auth.getSession()
+   *
+   * @returns {Promise<{ session: Session | null; user: User | null }>}
+   */
   event.locals.safeGetSession = async () => {
     const {
       data: { session },

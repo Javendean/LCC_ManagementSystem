@@ -1,4 +1,10 @@
 <script>
+  /**
+   * @component ContactsPage
+   * @description The main page for displaying the user's contacts.
+   * It uses the DataTable component to render the contacts and shows a skeleton loader while the data is being fetched.
+   * @props {import('./$types').PageData} data - The data for the page, including the list of contacts.
+   */
   import DataTable from '$lib/components/contacts-data-table/DataTable.svelte';
   import { Skeleton } from '$lib/components/ui/skeleton';
 

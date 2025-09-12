@@ -1,5 +1,10 @@
 <!-- src/routes/login/+page.svelte -->
 <script>
+  /**
+   * @component LoginPage
+   * @description The Svelte component for the login page.
+   * It provides a form for users to sign in.
+   */
   import { supabase } from '$lib/supabaseClient';
   import { goto } from '$app/navigation';
 
@@ -8,6 +13,10 @@
   let errorMessage = '';
   let loading = false;
 
+  /**
+   * Handles the user login process.
+   * It calls the Supabase `signInWithPassword` method and handles success and error cases.
+   */
   async function handleLogin() {
     loading = true;
     errorMessage = '';

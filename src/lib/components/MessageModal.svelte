@@ -1,4 +1,13 @@
 <script>
+  /**
+   * @component MessageModal
+   * @description A Svelte component that provides a dialog for sending a message to selected contacts.
+   * @props {boolean} open - Controls the visibility of the dialog.
+   * @props {Array<Contact>} selectedContacts - The list of contacts to send the message to.
+   * @event send - Dispatched when the user sends a message.
+   * @property {string} detail.message - The message to be sent.
+   * @property {Array<Contact>} detail.contacts - The contacts to whom the message will be sent.
+   */
   import { createEventDispatcher } from 'svelte';
   import { Button } from '$lib/components/ui/button';
   import { Textarea } from '$lib/components/ui/textarea';
@@ -11,6 +20,10 @@
 
   let message = '';
 
+  /**
+   * Handles the sending of the message.
+   * It dispatches a 'send' event with the message and the selected contacts.
+   */
   function handleSend() {
     if (message) {
       dispatch('send', { message, contacts: selectedContacts });

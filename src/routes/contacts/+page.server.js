@@ -1,6 +1,11 @@
 import { error } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageServerLoad} */
+/**
+ * The server-side load function for the contacts page.
+ * It fetches all contacts from the database.
+ *
+ * @type {import('./$types').PageServerLoad}
+ */
 export async function load({ locals: { supabase } }) {
   try {
     const { data: contacts, error: dbError } = await supabase

@@ -1,5 +1,15 @@
 <script>
+  /**
+   * @component ForgotPassword
+   * @description The Svelte component for the forgot password page.
+   * It provides a form for users to request a password reset link.
+   */
   import { enhance } from '$app/forms';
+
+  /**
+   * The form state, which is populated by the `enhance` action.
+   * @type {{success: boolean, error: string} | undefined}
+   */
   let form;
 </script>
 

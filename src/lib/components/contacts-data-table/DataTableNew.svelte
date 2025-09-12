@@ -1,4 +1,9 @@
 <script>
+  /**
+   * @component DataTableNew
+   * @description A Svelte component that displays a data table with filtering, sorting, and pagination.
+   * @props {Array<any>} data - The data to be displayed in the table.
+   */
   import { writable } from 'svelte/store';
   import {
     createSvelteTable,
@@ -12,6 +17,10 @@
 
   export let data;
 
+  /**
+   * The TanStack Table instance.
+   * @type {import('tanstack-table-8-svelte-5').SvelteTable}
+   */
   const table = createSvelteTable({
     data,
     columns,
@@ -21,6 +30,10 @@
     getSortedRowModel: getSortedRowModel(),
   });
 
+  /**
+   * A writable store that holds the global filter value.
+   * @type {import('svelte/store').Writable<string>}
+   */
   const globalFilter = writable('');
 </script>
 

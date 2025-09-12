@@ -1,6 +1,15 @@
 import { json, error } from '@sveltejs/kit';
 import Papa from 'papaparse';
 
+/**
+ * Handles POST requests to upload a CSV file of contacts.
+ * It parses the CSV, validates the data, and upserts the contacts into the database.
+ *
+ * @param {object} params
+ * @param {import('@sveltejs/kit').RequestEvent['request']} params.request - The request object.
+ * @param {import('@sveltejs/kit').RequestEvent['locals']} params.locals - The locals object.
+ * @returns {Promise<Response>} A JSON response indicating success and the number of contacts added, or an error.
+ */
 export async function POST({ request, locals: { supabase, user } }) {
   if (!user) {
     throw error(401, { message: 'Unauthorized' });
