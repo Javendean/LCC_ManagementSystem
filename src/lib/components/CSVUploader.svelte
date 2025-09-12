@@ -1,4 +1,10 @@
 <script>
+  /**
+   * A Svelte component for uploading CSV files.
+   *
+   * @event upload - Dispatched when a file is selected and the upload button is clicked.
+   * @property {File} detail.file - The selected file to upload.
+   */
   import { createEventDispatcher } from 'svelte';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';

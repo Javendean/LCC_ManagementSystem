@@ -1,4 +1,13 @@
 <script>
+  /**
+   * The contacts page, which displays a data table of all contacts.
+   *
+   * This page receives the contacts data from its server-side `load` function
+   * and passes it to the `DataTable` component for rendering. It also handles
+   * loading and empty states.
+   *
+   * @property {import('./$types').PageData} data - The data for the page, including the contacts.
+   */
   import DataTable from '$lib/components/contacts-data-table/DataTable.svelte';
   import { Skeleton } from '$lib/components/ui/skeleton';
 

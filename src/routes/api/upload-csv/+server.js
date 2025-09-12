@@ -1,6 +1,15 @@
 import { json, error } from '@sveltejs/kit';
 import Papa from 'papaparse';
 
+/**
+ * Handles POST requests to upload a CSV file of contacts.
+ *
+ * This endpoint parses a CSV file, extracts contact information, and upserts it
+ * into the Supabase database. It requires an active session.
+ *
+ * @param {import('./$types').RequestEvent} event - The SvelteKit request event.
+ * @returns {Promise<Response>} A JSON response indicating the number of contacts uploaded or an error.
+ */
 export async function POST({ request, locals: { supabase, getSession } }) {
   const session = await getSession();
   if (!session) {

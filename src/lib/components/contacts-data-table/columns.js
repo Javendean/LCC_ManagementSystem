@@ -1,6 +1,10 @@
 import { createRender } from '@tanstack/svelte-table';
 
-/** @type {import('@tanstack/svelte-table').ColumnDef<import('$lib/types').Contact>[]} */
+/**
+ * Defines the columns for the contacts data table.
+ *
+ * @type {import('@tanstack/svelte-table').ColumnDef<import('$lib/types').Contact>[]}
+ */
 export const columns = [
     {
         accessorKey: 'first_name',

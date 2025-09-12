@@ -1,4 +1,11 @@
 <script>
+  /**
+   * A Svelte component that displays a data table of contacts with global filtering and pagination.
+   *
+   * This component uses `@tanstack/svelte-table` to create a sortable, filterable, and paginated table.
+   *
+   * @property {import('$lib/types').Contact[]} data - The list of contacts to display in the table.
+   */
   import { writable, derived } from 'svelte/store';
   import {
     createSvelteTable,

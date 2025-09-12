@@ -1,7 +1,15 @@
 import { supabase } from '$lib/supabaseClient.js';
 import { error } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageServerLoad} */
+/**
+ * Loads the contacts from the database for the contacts page.
+ *
+ * This function is executed on the server and fetches all contacts from the
+ * Supabase database.
+ *
+ * @param {import('./$types').PageServerLoadEvent} event - The SvelteKit load event.
+ * @returns {Promise<{contacts: import('$lib/types').Contact[]}>} The contacts data.
+ */
 export async function load() {
     try {
         const { data: contacts, error: dbError } = await supabase.from('contacts').select('*');

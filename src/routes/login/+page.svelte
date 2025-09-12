@@ -1,5 +1,11 @@
 <!-- src/routes/login/+page.svelte -->
 <script>
+  /**
+   * The login page, which provides a form for users to sign in.
+   *
+   * This page uses Supabase for authentication. On successful login, it
+   * redirects the user to the contacts page.
+   */
   import { supabase } from '$lib/supabaseClient';
   import { goto } from '$app/navigation';
 

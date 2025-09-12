@@ -4,6 +4,15 @@ import { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } from '$env
 
 const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
+/**
+ * Handles POST requests to send messages to a list of contacts.
+ *
+ * This endpoint uses Twilio to send SMS messages. It requires an active session
+ * and expects a JSON payload with a `message` and a `contacts` array.
+ *
+ * @param {import('./$types').RequestEvent} event - The SvelteKit request event.
+ * @returns {Promise<Response>} A JSON response indicating success or failure.
+ */
 export async function POST({ request, locals: { getSession } }) {
   const session = await getSession();
   if (!session) {
