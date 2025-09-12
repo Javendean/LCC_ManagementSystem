@@ -4,42 +4,7 @@
 > prettier --check . && eslint .
 
 Checking formatting...
-[[33mwarn[39m] .svelte-kit/ambient.d.ts
-[[33mwarn[39m] .svelte-kit/generated/client/app.js
-[[33mwarn[39m] .svelte-kit/generated/client/matchers.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/0.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/1.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/2.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/3.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/4.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/5.js
-[[33mwarn[39m] .svelte-kit/generated/client/nodes/6.js
-[[33mwarn[39m] .svelte-kit/generated/root.svelte
-[[33mwarn[39m] .svelte-kit/generated/server/internal.js
-[[33mwarn[39m] .svelte-kit/non-ambient.d.ts
-[[33mwarn[39m] .svelte-kit/tsconfig.json
-[[33mwarn[39m] .svelte-kit/types/route_meta_data.json
-[[33mwarn[39m] .svelte-kit/types/src/routes/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/api/send-message/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/api/upload-csv/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/auth/forgot-password/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/auth/forgot-password/proxy+page.server.js
-[[33mwarn[39m] .svelte-kit/types/src/routes/auth/update-password/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/contacts/$types.d.ts
-[[33mwarn[39m] .svelte-kit/types/src/routes/login/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/ambient.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/non-ambient.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/tsconfig.json
-[[33mwarn[39m] my-app/.svelte-kit/types/route_meta_data.json
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/api/send-message/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/api/upload-csv/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/auth/callback/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/auth/update-password/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/contacts/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/login/$types.d.ts
-[[33mwarn[39m] my-app/.svelte-kit/types/src/routes/signup/$types.d.ts
-[[33mwarn[39m] src/routes/+layout.svelte
-[[33mwarn[39m] test-results/.last-run.json
-[[33mwarn[39m] Code style issues found in 37 files. Run Prettier with --write to fix.
+[[33mwarn[39m] [33msvelteBracketNewLine[39m is deprecated.
+[[33mwarn[39m] eslint.config.js
+[[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
 husky - pre-commit script failed (code 1)

@@ -1,11 +1,7 @@
 // @ts-nocheck
 /** */
 export const actions = {
-  default: /** @param {import('./$types').RequestEvent} event */ async ({
-    request,
-    url,
-    locals: { supabase },
-  }) => {
+  default:/** @param {import('./$types').RequestEvent} event */  async ({ request, url, locals: { supabase } }) => {
     const formData = await request.formData();
     const email = formData.get('email');
 
