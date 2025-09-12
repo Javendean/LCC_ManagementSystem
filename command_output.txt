@@ -1,0 +1,10 @@
+> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file -
+
+> lcc-mgmt@0.0.1 lint
+> prettier --check . && eslint .
+
+Checking formatting...
+[[33mwarn[39m] [33msvelteBracketNewLine[39m is deprecated.
+[[33mwarn[39m] eslint.config.js
+[[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
+husky - pre-commit script failed (code 1)

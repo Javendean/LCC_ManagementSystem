@@ -1,4 +1,4 @@
-```
+````
 # Gemini Task: Implement SvelteKit Authentication Flow
 
 **Task ID:** `5.1_Login_Page`
@@ -71,7 +71,7 @@ This file instructs the Gemini Coding Assistant to implement the foundational us
 <!-- This slot will render the current page -->
 <slot />
 
-```
+````
 
 #### File 2: Login Page
 

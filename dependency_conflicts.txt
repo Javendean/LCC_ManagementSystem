@@ -1,0 +1,45 @@
+# Project Dependency Conflict Report
+
+**Date:** 2025-09-04
+
+## 1. Executive Summary
+
+The primary source of instability and build errors in this project is a core dependency conflict between the Svelte version being used and the versions required by critical packages.
+
+- **Project Svelte Version:** `^5.0.0`
+- **Conflicting Dependency Requirement:** `^4.0.0`
+
+This mismatch requires a workaround to install any new packages and poses a risk to the project's long-term stability.
+
+## 2. Primary Conflicting Package
+
+The main package causing these issues is:
+
+- **Package:** `@tanstack/svelte-table`
+- **Installed Version:** `8.21.3`
+- **Required Svelte Version:** `^4.0.0 || ^3.49.0`
+- **Conflict:** The project's Svelte 5 is outside the allowed range for this package.
+
+### Symptoms
+
+This conflict manifests as `ERESOLVE` errors during `npm install`. This prevents `npm` from cleanly installing new packages because it cannot build a valid dependency tree.
+
+### Current Workaround
+
+To bypass this issue, all `npm install` commands have been run using the `--legacy-peer-deps` flag. This flag forces npm to ignore the version mismatch.
+
+**This is not a permanent solution.** While it allows the application to build, it can lead to subtle bugs or unexpected behavior because the components are running in an environment they were not designed for.
+
+## 3. Recommendations for a Long-Term Fix
+
+To ensure project stability and remove the need for workarounds, the following options should be considered:
+
+1.  **Upgrade `@tanstack/svelte-table` (Recommended):**
+    -   Research and migrate to a new major version of the TanStack Table library that is officially compatible with Svelte 5. 
+    -   **Note:** This will likely involve installing a new package (the naming convention may have changed) and will almost certainly require refactoring the code in `my-app/src/lib/components/contacts-data-table/` to adapt to the new version's API.
+
+2.  **Replace the Component Library:**
+    -   If a Svelte 5 compatible version of TanStack Table is not available, consider replacing it with an alternative data table library that is built for Svelte 5.
+
+3.  **Downgrade Svelte to Version 4 (Not Recommended):**
+    -   This would resolve the conflict but is a significant undertaking. It would involve a project-wide refactor to remove Svelte 5 features (like Runes) and would prevent the use of modern Svelte capabilities.

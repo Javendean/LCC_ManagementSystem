@@ -1,0 +1,82 @@
+**Auth System Review and Improvement Plan (v2)**
+
+**1. Objective**
+
+This plan outlines a comprehensive strategy to meticulously review the user authentication system (login, signup, password recovery) of the LCC Management application. The primary goals are to identify potential security vulnerabilities, functional bugs, and usability issues, and to propose a clear action plan for remediation.
+
+**2. Scope**
+
+The review will cover the following components:
+
+*   **Signup:** The user registration process.
+*   **Login:** The user authentication process.
+*   **Password Recovery:** The "forgot password" and password reset functionality.
+*   **Session Management:** How user sessions are handled post-login.
+
+**3. Methodology**
+
+**3.1. Codebase Review**
+
+*   **File Identification:** Based on `GEMINI.md`, the following files are central to the authentication system and will be the primary focus of the code review:
+    *   `src/routes/signup/+page.svelte`
+    *   `src/routes/login/+page.svelte`
+    *   `src/routes/auth/forgot-password/+page.svelte`
+    *   `src/routes/auth/forgot-password/+page.server.js`
+    *   `src/routes/auth/update-password/+page.svelte`
+    *   `src/hooks.server.js` (for session management and route protection)
+    *   `src/lib/supabaseClient.js` (for Supabase client initialization)
+
+*   **Review Focus:**
+    *   **Input Validation:** Ensuring that all user-provided data (email, password) is properly validated on both the client and server sides.
+    *   **Error Handling:** Verifying that errors (e.g., incorrect password, user not found) are handled gracefully and do not expose sensitive information.
+    *   **Security Best Practices:**
+        *   Checking for common vulnerabilities like XSS and CSRF.
+        *   In `hooks.server.js`, verifying the secure creation of the Supabase client, the logic for protecting routes, the security of session data passed to the client, and secure cookie handling (`httpOnly`, `secure` flags).
+        *   In the password recovery flow, verifying the email sending mechanism, and the generation, storage, expiration, and validation of password reset tokens.
+    *   **Code Clarity and Maintainability:** Assessing the readability and structure of the code.
+
+**3.2. Tool-Based Analysis (Supabase)**
+
+To gain deeper insights into the authentication system's behavior, Supabase tools will be utilized. The exact tool names will be discovered using `RUBE_SEARCH_TOOLS` with the following `use_case` strings: `"get supabase auth logs"`, `"list supabase users"`.
+
+*   **User Analysis:**
+    *   **Tool:** (To be determined via `RUBE_SEARCH_TOOLS` with `use_case="list supabase users"`)
+    *   **Action:** Retrieve a list of users to check for any anomalies in user data, such as missing email confirmations or unusual sign-up timestamps.
+
+*   **Authentication Log Analysis:**
+    *   **Tool:** (To be determined via `RUBE_SEARCH_TOOLS` with `use_case="get supabase auth logs"`)
+    *   **Action:** Review the authentication logs for patterns of failed login attempts, errors during signup, or issues with password recovery emails.
+
+*   **Database Inspection:**
+    *   **Tool:** `execute_sql`
+    *   **Action:** Execute specific SQL queries to inspect the `auth.users` and `auth.identities` tables to verify data integrity and check for any inconsistencies. Example queries:
+        *   `SELECT email, created_at, email_confirmed_at FROM auth.users ORDER BY created_at DESC LIMIT 20;`
+        *   `SELECT provider, COUNT(*) FROM auth.identities GROUP BY provider;`
+
+**3.3. User Experience and Usability Testing**
+
+*   **Methodology:** Manually test the authentication flows from a user's perspective.
+*   **Focus:**
+    *   Clarity and helpfulness of error messages.
+    *   Intuitive UI and ease of navigation.
+    *   Presence of loading states and other feedback during asynchronous operations (e.g., form submissions).
+
+**4. Documentation of Findings**
+
+All findings will be meticulously documented in a new Markdown file named `Auth_Review_Findings.md`. For each finding, the following information will be recorded:
+
+*   **ID:** A unique identifier for the finding.
+*   **Component:** The part of the system where the issue was found (e.g., Login Page, Signup API).
+*   **Severity:** The potential impact of the issue (e.g., Critical, High, Medium, Low).
+*   **Description:** A detailed explanation of the issue, including steps to reproduce it if applicable.
+*   **Evidence:** Code snippets, log entries, or screenshots to support the finding.
+
+**5. Plan of Action for Correction**
+
+For each finding documented in `Auth_Review_Findings.md`, a corresponding plan of action will be proposed. This will include:
+
+*   **Recommended Change:** A specific, actionable recommendation for how to fix the issue.
+*   **Priority:** The urgency of the fix (e.g., High, Medium, Low).
+*   **Effort:** An estimate of the effort required to implement the fix (e.g., Small, Medium, Large).
+
+This structured approach will ensure a thorough review of the authentication system and provide a clear path forward for improving its security and reliability.

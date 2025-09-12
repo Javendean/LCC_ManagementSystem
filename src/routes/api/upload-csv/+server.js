@@ -1,9 +1,8 @@
 import { json, error } from '@sveltejs/kit';
 import Papa from 'papaparse';
 
-export async function POST({ request, locals: { supabase, getSession } }) {
-  const session = await getSession();
-  if (!session) {
+export async function POST({ request, locals: { supabase, user } }) {
+  if (!user) {
     throw error(401, { message: 'Unauthorized' });
   }
 
@@ -26,10 +25,12 @@ export async function POST({ request, locals: { supabase, getSession } }) {
             first_name: row['First Name'],
             last_name: row['Last Name'],
             phone_number: row['Phone Number'],
-            user_id: session.user.id
+            user_id: user.id,
           }));
 
-          const { error: dbError } = await supabase.from('contacts').upsert(contacts);
+          const { error: dbError } = await supabase
+            .from('contacts')
+            .upsert(contacts);
 
           if (dbError) {
             throw error(500, { message: dbError.message });
@@ -42,7 +43,7 @@ export async function POST({ request, locals: { supabase, getSession } }) {
       },
       error: (err) => {
         reject(error(400, { message: err.message }));
-      }
+      },
     });
   });
 }

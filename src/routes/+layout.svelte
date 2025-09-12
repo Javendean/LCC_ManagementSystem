@@ -1,23 +1,40 @@
 <script>
-  import { onMount } from 'svelte'
-  import { supabase } from '$lib/supabaseClient'
-  import { invalidateAll } from '$app/navigation'
+  import { onMount } from 'svelte';
+  import { supabase } from '$lib/supabaseClient';
+  import { invalidateAll, goto } from '$app/navigation';
 
-  export let data
+  export let data;
 
-  $: ({ session } = data)
+  $: ({ session } = data);
 
   onMount(() => {
+    console.log('Layout mounted, setting up onAuthStateChange listener.');
+
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, newSession) => {
-      if (newSession?.expires_at !== session?.expires_at) {
-        invalidateAll()
-      }
-    })
+      console.log('onAuthStateChange event:', event, newSession);
 
-    return () => subscription.unsubscribe()
-  })
+      if (event === 'PASSWORD_RECOVERY') {
+        console.log('PASSWORD_RECOVERY event detected, redirecting...');
+        goto('/auth/update-password');
+      }
+
+      if (newSession?.expires_at !== session?.expires_at) {
+        console.log('Session expired or changed, invalidating...');
+        invalidateAll();
+      }
+    });
+
+    return () => {
+      console.log('Layout unmounted, unsubscribing from onAuthStateChange.');
+      subscription.unsubscribe();
+    };
+  });
 </script>
+
+<svelte:head>
+  <title>LCC Management System</title>
+</svelte:head>
 
 <slot />
