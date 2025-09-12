@@ -1,13 +1,35 @@
 <script>
+  import CSVUploader from '$lib/components/CSVUploader.svelte';
   import DataTable from '$lib/components/contacts-data-table/DataTable.svelte';
   import { Skeleton } from '$lib/components/ui/skeleton';
+  import { invalidateAll } from '$app/navigation';
 
   /** @type {import('./$types').PageData} */
   export let data;
+
+  async function handleUpload(event) {
+    const { file } = event.detail;
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const res = await fetch('/api/upload-csv', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (res.ok) {
+      invalidateAll();
+    } else {
+      alert('Upload failed');
+    }
+  }
 </script>
 
 <div class="container mx-auto py-10">
-  <h1 class="text-2xl font-bold mb-4">Contacts</h1>
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Contacts</h1>
+    <CSVUploader on:upload={handleUpload} />
+  </div>
 
   {#if data.contacts}
     {#if data.contacts.length > 0}

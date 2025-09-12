@@ -30,7 +30,7 @@ export async function POST({ request, locals: { supabase, user } }) {
 
           const { error: dbError } = await supabase
             .from('contacts')
-            .upsert(contacts);
+            .upsert(contacts, { onConflict: 'phone_number,user_id' });
 
           if (dbError) {
             throw error(500, { message: dbError.message });

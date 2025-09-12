@@ -14,7 +14,7 @@
   }
 </script>
 
-<div class="flex w-full max-w-sm items-center space-x-2">
+<div class="flex w-full max-w-sm items-center space-x-2" data-testid="csv-uploader">
   <Input type="file" bind:files accept=".csv" />
   <Button on:click={handleUpload}>Upload CSV</Button>
 </div>
