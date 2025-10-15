@@ -21,41 +21,49 @@
  * 
  * You can override `.env` values from the command line like so:
  * 
- * ```bash
+ * ```sh
  * MY_FEATURE_FLAG="enabled" npm run dev
  * ```
  */
 declare module '$env/static/private' {
 	export const SUPABASE_URL: string;
 	export const SUPABASE_ANON_KEY: string;
+	export const ACLOCAL_PATH: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
-	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLOR: string;
-	export const COLORTERM: string;
-	export const CommonProgramFiles: string;
+	export const COMMONPROGRAMFILES: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
-	export const ComSpec: string;
+	export const COMSPEC: string;
+	export const CONFIG_SITE: string;
+	export const DEBUGGAI_API_KEY: string;
+	export const DISPLAY: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_31400_1262719628: string;
-	export const EFC_31400_1592913036: string;
-	export const EFC_31400_2283032206: string;
-	export const EFC_31400_2775293581: string;
-	export const EFC_31400_3789132940: string;
-	export const GIT_ASKPASS: string;
+	export const EFC_6228_1592913036: string;
+	export const EXEPATH: string;
+	export const GEMINI_API_KEY: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
+	export const HOSTNAME: string;
+	export const INFOPATH: string;
 	export const INIT_CWD: string;
 	export const JAVA_HOME: string;
-	export const LANG: string;
+	export const LC_CTYPE: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
+	export const MANPATH: string;
+	export const MINGW_CHOST: string;
+	export const MINGW_PACKAGE_PREFIX: string;
+	export const MINGW_PREFIX: string;
+	export const MSYSTEM: string;
+	export const MSYSTEM_CARCH: string;
+	export const MSYSTEM_CHOST: string;
+	export const MSYSTEM_PREFIX: string;
 	export const NODE: string;
 	export const NODE_ENV: string;
-	export const NODE_OPTIONS: string;
 	export const npm_command: string;
 	export const npm_config_cache: string;
 	export const npm_config_globalconfig: string;
@@ -73,44 +81,52 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
 	export const npm_package_json: string;
+	export const npm_package_name: string;
+	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
 	export const OneDrive: string;
 	export const OneDriveConsumer: string;
-	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
+	export const ORIGINAL_PATH: string;
+	export const ORIGINAL_TEMP: string;
+	export const ORIGINAL_TMP: string;
 	export const OS: string;
-	export const Path: string;
+	export const PATH: string;
 	export const PATHEXT: string;
+	export const PKG_CONFIG_PATH: string;
+	export const PKG_CONFIG_SYSTEM_INCLUDE_PATH: string;
+	export const PKG_CONFIG_SYSTEM_LIBRARY_PATH: string;
+	export const PLINK_PROTOCOL: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
 	export const PROCESSOR_LEVEL: string;
 	export const PROCESSOR_REVISION: string;
 	export const ProgramData: string;
-	export const ProgramFiles: string;
+	export const PROGRAMFILES: string;
 	export const ProgramW6432: string;
 	export const PROMPT: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
+	export const PWD: string;
 	export const RTOOLS40_HOME: string;
 	export const SESSIONNAME: string;
-	export const SystemDrive: string;
-	export const SystemRoot: string;
+	export const SHELL: string;
+	export const SHLVL: string;
+	export const SSH_ASKPASS: string;
+	export const SYSTEMDRIVE: string;
+	export const SYSTEMROOT: string;
 	export const TEMP: string;
+	export const TERM: string;
 	export const TERM_PROGRAM: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const TMP: string;
+	export const TMPDIR: string;
 	export const USERDOMAIN: string;
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
-	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-	export const VSCODE_GIT_ASKPASS_MAIN: string;
-	export const VSCODE_GIT_ASKPASS_NODE: string;
-	export const VSCODE_GIT_IPC_HANDLE: string;
-	export const VSCODE_INJECTION: string;
-	export const VSCODE_INSPECTOR_OPTIONS: string;
-	export const windir: string;
+	export const WINDIR: string;
 	export const ZES_ENABLE_SYSMAN: string;
 }
 
@@ -126,6 +142,7 @@ declare module '$env/static/private' {
 declare module '$env/static/public' {
 	export const PUBLIC_SUPABASE_URL: string;
 	export const PUBLIC_SUPABASE_ANON_KEY: string;
+	export const PUBLIC_SUPABASE_SERVICE_ROLE_KEY: string;
 }
 
 /**
@@ -133,47 +150,53 @@ declare module '$env/static/public' {
  * 
  * This module cannot be imported into client-side code.
  * 
- * Dynamic environment variables cannot be used during prerendering.
- * 
  * ```ts
  * import { env } from '$env/dynamic/private';
  * console.log(env.DEPLOYMENT_SPECIFIC_VARIABLE);
  * ```
  * 
- * > In `dev`, `$env/dynamic` always includes environment variables from `.env`. In `prod`, this behavior will depend on your adapter.
+ * > [!NOTE] In `dev`, `$env/dynamic` always includes environment variables from `.env`. In `prod`, this behavior will depend on your adapter.
  */
 declare module '$env/dynamic/private' {
 	export const env: {
 		SUPABASE_URL: string;
 		SUPABASE_ANON_KEY: string;
+		ACLOCAL_PATH: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
-		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLOR: string;
-		COLORTERM: string;
-		CommonProgramFiles: string;
+		COMMONPROGRAMFILES: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
-		ComSpec: string;
+		COMSPEC: string;
+		CONFIG_SITE: string;
+		DEBUGGAI_API_KEY: string;
+		DISPLAY: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_31400_1262719628: string;
-		EFC_31400_1592913036: string;
-		EFC_31400_2283032206: string;
-		EFC_31400_2775293581: string;
-		EFC_31400_3789132940: string;
-		GIT_ASKPASS: string;
+		EFC_6228_1592913036: string;
+		EXEPATH: string;
+		GEMINI_API_KEY: string;
 		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
+		HOSTNAME: string;
+		INFOPATH: string;
 		INIT_CWD: string;
 		JAVA_HOME: string;
-		LANG: string;
+		LC_CTYPE: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
+		MANPATH: string;
+		MINGW_CHOST: string;
+		MINGW_PACKAGE_PREFIX: string;
+		MINGW_PREFIX: string;
+		MSYSTEM: string;
+		MSYSTEM_CARCH: string;
+		MSYSTEM_CHOST: string;
+		MSYSTEM_PREFIX: string;
 		NODE: string;
 		NODE_ENV: string;
-		NODE_OPTIONS: string;
 		npm_command: string;
 		npm_config_cache: string;
 		npm_config_globalconfig: string;
@@ -191,44 +214,52 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
 		npm_package_json: string;
+		npm_package_name: string;
+		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
 		OneDrive: string;
 		OneDriveConsumer: string;
-		ORIGINAL_XDG_CURRENT_DESKTOP: string;
+		ORIGINAL_PATH: string;
+		ORIGINAL_TEMP: string;
+		ORIGINAL_TMP: string;
 		OS: string;
-		Path: string;
+		PATH: string;
 		PATHEXT: string;
+		PKG_CONFIG_PATH: string;
+		PKG_CONFIG_SYSTEM_INCLUDE_PATH: string;
+		PKG_CONFIG_SYSTEM_LIBRARY_PATH: string;
+		PLINK_PROTOCOL: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
 		PROCESSOR_LEVEL: string;
 		PROCESSOR_REVISION: string;
 		ProgramData: string;
-		ProgramFiles: string;
+		PROGRAMFILES: string;
 		ProgramW6432: string;
 		PROMPT: string;
 		PSModulePath: string;
 		PUBLIC: string;
+		PWD: string;
 		RTOOLS40_HOME: string;
 		SESSIONNAME: string;
-		SystemDrive: string;
-		SystemRoot: string;
+		SHELL: string;
+		SHLVL: string;
+		SSH_ASKPASS: string;
+		SYSTEMDRIVE: string;
+		SYSTEMROOT: string;
 		TEMP: string;
+		TERM: string;
 		TERM_PROGRAM: string;
 		TERM_PROGRAM_VERSION: string;
 		TMP: string;
+		TMPDIR: string;
 		USERDOMAIN: string;
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
-		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
-		VSCODE_GIT_ASKPASS_MAIN: string;
-		VSCODE_GIT_ASKPASS_NODE: string;
-		VSCODE_GIT_IPC_HANDLE: string;
-		VSCODE_INJECTION: string;
-		VSCODE_INSPECTOR_OPTIONS: string;
-		windir: string;
+		WINDIR: string;
 		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
@@ -240,8 +271,6 @@ declare module '$env/dynamic/private' {
  * 
  * Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use `$env/static/public` instead.
  * 
- * Dynamic environment variables cannot be used during prerendering.
- * 
  * ```ts
  * import { env } from '$env/dynamic/public';
  * console.log(env.PUBLIC_DEPLOYMENT_SPECIFIC_VARIABLE);
@@ -251,6 +280,7 @@ declare module '$env/dynamic/public' {
 	export const env: {
 		PUBLIC_SUPABASE_URL: string;
 		PUBLIC_SUPABASE_ANON_KEY: string;
+		PUBLIC_SUPABASE_SERVICE_ROLE_KEY: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
 }
