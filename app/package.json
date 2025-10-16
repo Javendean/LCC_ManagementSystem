@@ -14,7 +14,8 @@
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
     "papaparse": "^5.5.3",
-    "twilio": "^5.7.3"
+    "twilio": "^5.7.3",
+    "tanstack-table-8-svelte-5": "^0.1.2"
   },
   "overrides": {
     "cookie": "^0.7.2"
