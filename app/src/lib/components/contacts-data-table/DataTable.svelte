@@ -8,9 +8,9 @@
 		getSortedRowModel
 	} from 'tanstack-table-8-svelte-5';
 	import { columns } from './columns.js';
-	import * as Table from '$lib/components/ui/table';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
+	import * as Table from '$lib/components/ui/table/index.ts';
+	import { Input } from '$lib/components/ui/input/index.ts';
+	import { Button } from '$lib/components/ui/button/index.ts';
 	import {
 		ChevronDown,
 		ChevronLeft,
@@ -18,12 +18,7 @@
 		ChevronsLeft,
 		ChevronsRight
 	} from 'lucide-svelte';
-	import {
-		DropdownMenu,
-		DropdownMenuCheckboxItem,
-		DropdownMenuContent,
-		DropdownMenuTrigger
-	} from '$lib/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '$lib/components/ui/dropdown-menu/index.ts';
 
 	/** @type {import('$lib/types').Contact[]} */
 	let { contacts = [] } = $props();
