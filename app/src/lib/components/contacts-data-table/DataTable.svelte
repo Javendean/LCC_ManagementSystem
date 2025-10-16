@@ -26,7 +26,7 @@
 	} from '$lib/components/ui/dropdown-menu';
 
 	/** @type {import('$lib/types').Contact[]} */
-	export let contacts = [];
+	let { contacts = [] } = $props();
 
 	let sorting = [];
 	let columnFilters = [];
@@ -74,9 +74,9 @@
 <div class="rounded-md border">
   <Table.Root>
     <Table.Header>
-      {#each $table.getHeaderGroups() as headerGroup}
+      {#each $table.getHeaderGroups() as headerGroup (headerGroup.id)}
         <Table.Row>
-          {#each headerGroup.headers as header}
+          {#each headerGroup.headers as header (header.id)}
             <Table.Head>
               {@render flexRender(header.column.columnDef.header, header.getContext())}
             </Table.Head>
@@ -85,9 +85,9 @@
       {/each}
     </Table.Header>
     <Table.Body>
-      {#each $table.getRowModel().rows as row}
+      {#each $table.getRowModel().rows as row (row.id)}
         <Table.Row>
-          {#each row.getVisibleCells() as cell}
+          {#each row.getVisibleCells() as cell (cell.id)}
             <Table.Cell>
               {@render flexRender(cell.column.columnDef.cell, cell.getContext())}
             </Table.Cell>

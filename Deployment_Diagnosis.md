@@ -9,35 +9,36 @@ This document outlines the diagnosis of the Vercel deployment failure for the `l
 
 ## 2. Root Cause Analysis
 
-Analysis of the build logs revealed two primary issues:
+Analysis of the build logs revealed multiple issues:
 
-### 2.1. Missing Dependency and Incorrect Import
+### 2.1. Missing Dependencies
 
-The most critical error was a build failure caused by an unresolved import:
+The build was failing due to unresolved imports for the following packages:
+-   `@tanstack/svelte-table`
+-   `lucide-svelte`
 
-```
-[vite]: Rollup failed to resolve import "@tanstack/svelte-table" from "/vercel/path1/src/lib/components/contacts-data-table/DataTable.svelte".
-```
-
-This indicates that the `DataTable.svelte` component was trying to import from `@tanstack/svelte-table`, but the package installed was `tanstack-table-8-svelte-5`. The import statement in the component was incorrect.
+These packages were used in the `DataTable.svelte` component but were not declared as dependencies in the `package.json` file.
 
 ### 2.2. Invalid `jsconfig.json`
 
-A warning was also present in the logs:
+A warning was also present in the logs regarding an invalid `extends` property in `jsconfig.json`.
 
-```
-▲ [WARNING] Cannot find base config file "./.svelte-kit/tsconfig.json" [tsconfig.json]
-```
+### 2.3. Svelte 5 Runes Compliance
 
-This was caused by an `extends` property in `jsconfig.json` that pointed to a non-existent file. This has been corrected.
+The `svelte-autofixer` tool identified that the `DataTable.svelte` component was not compliant with Svelte 5's runes mode. Specifically, it was using `export let` instead of the `$props()` rune and was missing keys in the `{#each}` blocks.
 
 ## 3. Resolution
 
 The following steps were taken to resolve these issues:
 
-1.  **Corrected Import:** The import statement in `app/src/lib/components/contacts-data-table/DataTable.svelte` was changed from `@tanstack/svelte-table` to `tanstack-table-8-svelte-5`.
+1.  **Added Missing Dependencies:** The `package.json` file was updated to include `tanstack-table-8-svelte-5` (a Svelte 5 compatible version of the table library) and `lucide-svelte`.
 
-2.  **Corrected `jsconfig.json`:** The invalid `extends` property was removed from the `jsconfig.json` file.
+2.  **Corrected `jsconfig.json`:** The `extends` property in `jsconfig.json` was updated to point to the correct path.
+
+3.  **Made `DataTable.svelte` Svelte 5 Compliant:**
+    *   The import statement in `app/src/lib/components/contacts-data-table/DataTable.svelte` was changed to `tanstack-table-8-svelte-5`.
+    *   The `export let` was replaced with the `$props()` rune.
+    *   Unique keys were added to all `{#each}` blocks.
 
 ## 4. Next Steps
 
