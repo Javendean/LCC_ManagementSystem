@@ -6,7 +6,7 @@
 		getFilteredRowModel,
 		getPaginationRowModel,
 		getSortedRowModel
-	} from '@tanstack/svelte-table';
+	} from 'tanstack-table-8-svelte-5';
 	import { columns } from './columns.js';
 	import * as Table from '$lib/components/ui/table';
 	import { Input } from '$lib/components/ui/input';
