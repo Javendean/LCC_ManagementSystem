@@ -1,6 +1,6 @@
 <script>
   import DataTable from '$lib/components/contacts-data-table/DataTable.svelte';
-  import { Skeleton } from '$lib/components/ui/skeleton';
+  import Skeleton from '$lib/components/ui/skeleton.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;

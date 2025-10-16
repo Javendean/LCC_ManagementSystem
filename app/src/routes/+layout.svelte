@@ -1,4 +1,5 @@
 <script>
+  import '../app.css';
   import { onMount } from 'svelte'
   import { supabase } from '$lib/supabaseClient'
   import { invalidateAll } from '$app/navigation'
